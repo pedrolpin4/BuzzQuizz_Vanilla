@@ -6,6 +6,8 @@ body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background: #fafafa;
 }
 
 .top-box{
@@ -19,4 +21,147 @@ body {
     color: #FFFFFF;
     font-weight: bold;
     font-size: 37px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.quizz-creator{
+    width: 1051px;
+    height: 181px;
+    margin: 77px 0px;
+    border: 1px dashed #D5D5D5;
+    border-radius: 5px;
+    padding-top: 7px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.creator-message{
+    width: 250px;
+    height: 107px;
+    font-size: 20px;
+    line-height: 23px;
+    color: #B9B9B9;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.create-button{
+    width: 151px;
+    height: 40px;
+    font-size: 21px;
+    width: 136px;
+    height: 40px;
+    color: #EC362D;
+    border: 1px dashed #EC362D;
+    border-radius: 50px;
+    background: #FAFAFA;
+
+}
+
+.my-quizz-box-title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 69px 0px 12px 0px;
+}
+
+.my-quizz-box-title p {
+    margin-right: 17px;
+}
+
+.my-quizz-box-title ion-icon {
+    width: 31px;
+    height: 30px;
+    color: #EC362D;;
+}
+
+.my-quizz-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1067px;
+    height: auto;
+    margin-bottom: 48px;
+}
+
+.quizz-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1067px;
+    height: auto;
+}
+
+.quizz-box-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.quizz{
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://miuc.org/wp-content/uploads/2020/08/6-Reasons-why-you-should-learn-Programming-737x366.png);
+    border-radius: 5px;
+    margin: 0px 15px 12px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.quizz div{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #FAFAFA;
+    font-size: 19px;
+    margin: 0px 0px 7px 18px;
+}
+
+@media (max-width: 1100px){
+    .container{
+        align-items: center;
+    }
+
+    .quizz-creator{
+        width: 340px;
+    }
+
+    .my-quizz-box{
+        width: 340px;
+    }
+
+    .my-quizz-box-title{
+        align-self: flex-start;
+    }
+
+    .my-quizz-box-title{
+        align-self: flex-start;
+        justify-content: space-between;
+        width: 340px;
+    }
+
+    .my-quizz-box-title p {
+        margin: none;
+    }
+
+    .quizz-box-title{
+        align-self: flex-start;
+    }
+
+    .quizz-box{
+        width: 340px;
+        flex-direction: column;
+    }
+
+    .quizz{
+        margin-right: 0px;
+    }
 }
