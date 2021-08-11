@@ -50,13 +50,13 @@ input ::-ms-input-placeholder{
 /* Creator box */
 
 .quizz-creator{
+    display: none;
     width: 1051px;
     height: 181px;
     margin: 77px 0px;
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
     padding-top: 7px;
-    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -132,18 +132,19 @@ input ::-ms-input-placeholder{
 }
 
 .quizz{
+    display: flex;
     width: 340px;
     height: 181px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://miuc.org/wp-content/uploads/2020/08/6-Reasons-why-you-should-learn-Programming-737x366.png);
     border-radius: 5px;
     margin: 0px 15px 12px 0px;
-    display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
 .quizz div{
     display: flex;
+    height: 54px;
     flex-wrap: wrap;
     align-items: center;
     color: #FAFAFA;
@@ -151,9 +152,10 @@ input ::-ms-input-placeholder{
     margin: 0px 0px 7px 18px;
 }
 
-/*Layout 3.1*/
+/* Layout 3.1 */
 
 .form-title{
+    display: none;
     align-self: center;
     font-weight: bold;
     font-size: 20px;
@@ -162,10 +164,10 @@ input ::-ms-input-placeholder{
 }
 
 .form{
+    display: none;
     background-color: #ffffff;
     width: 600px;
     height: 256px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -184,9 +186,10 @@ input ::-ms-input-placeholder{
 }
 
 .send-form {
+    display: none;
+    font-size: 21px;
     width: 368.86px;
     align-self: center;
-    display: flex;
     align-items: center;
     justify-content: center;
     height: 54px;
@@ -197,6 +200,61 @@ input ::-ms-input-placeholder{
     color: #FAFAFA;
 }
 
+/* Layout 3.4 */
+.finished-message{
+    align-self: center;
+    font-weight: bold;
+    font-size: 21px;
+    margin-top: 71px;
+    margin-bottom: 46px;
+}
+
+.my-quizz{
+    display: flex;
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://miuc.org/wp-content/uploads/2020/08/6-Reasons-why-you-should-learn-Programming-737x366.png);
+    border-radius: 5px;
+    margin-bottom: 45px;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.my-quizz div {
+    display: flex;
+    height: 54px;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #FAFAFA;
+    font-size: 19px;
+    margin: 0px 0px 7px 18px;
+}
+
+.access-form{
+    display: flex;
+    width: 368.86px;
+    font-size: 21px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    margin-bottom: 9px;
+    background: #EC362D;
+    border-radius: 15px;
+    border: none;
+    color: #FAFAFA;
+}
+
+.return-home{
+    align-self: center;
+    width: 219.64px;
+    height: 44px;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #818181;
+}
 
 @media (max-width: 1100px){
     .container{
