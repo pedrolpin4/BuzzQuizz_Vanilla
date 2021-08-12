@@ -1,18 +1,87 @@
-.top-quizz img{
+.top-quizz p{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/16777216colors.png/220px-16777216colors.png");
     width: 100vw;
     height: 10vh;
-    margin-bottom: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.top-quizz, .question p{
+.question, .result p{
     text-align: center; 
+}
+
+.question p{
+    background: #434CA0;
+    color: #FFFFFF;
+    padding: 4%;
+    margin-bottom: 5%;
+}
+
+.question h1{
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
 }
 
 .question{
     margin-top: 7vh;
-    background-color: aquamarine;  
+    background: #FFFFFF;
+    height: 30vw;
+    width: 30vw;     
 }
 
 .question img{
-    align-self: center ;
+    padding: 2%;    
+}
+
+.result{
+    margin-top: 5%;
+    background: #FFFFFF;
+    height: 30vw;
+    width: 30vw;  
+}
+
+.result p{
+    background: #EC362D;
+    color: #FFFFFF;
+    padding: 4%;
+    margin-bottom: 5%;
+}
+
+.description{
+    display: flex;
+    justify-content: space-between;
+}
+
+.restart{
+    background: #EC362D;
+    padding: 2%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;   
+    border-radius: 15px; 
+}
+
+.home{
+    color: #818181;
+    margin-bottom: 2%;
+}
+
+@media (max-width: 600px){
+    .question, .result{
+        height: 100vw;
+        width: 100vw;  
+    }
+}
+
+@media (max-width: 1100px){
+    .question, .result{
+        height: 40vw;
+        width: 60vw;  
+    }
 }
