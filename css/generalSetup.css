@@ -30,6 +30,9 @@ input ::-ms-input-placeholder{
 }
 
 .top-box{
+    position: fixed;
+    right: 0;
+    left: 0;
     width: 100vw;
     height: 69px;
     display: flex;
