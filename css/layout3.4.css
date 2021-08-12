@@ -1,0 +1,58 @@
+/* Layout 3.4 */
+
+.finished-message{
+    display: none;
+    align-self: center;
+    font-weight: bold;
+    font-size: 21px;
+    margin-top: 71px;
+    margin-bottom: 46px;
+}
+
+.my-quizz{
+    display: none;
+    align-self: center;
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://miuc.org/wp-content/uploads/2020/08/6-Reasons-why-you-should-learn-Programming-737x366.png);
+    border-radius: 5px;
+    margin-bottom: 45px;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.my-quizz div {
+    display: flex;
+    height: 54px;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #FAFAFA;
+    font-size: 19px;
+    margin: 0px 0px 7px 18px;
+}
+
+.access-form{
+    display: none;
+    width: 368.86px;
+    font-size: 21px;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    margin-bottom: 9px;
+    background: #EC362D;
+    border-radius: 15px;
+    border: none;
+    color: #FAFAFA;
+}
+
+.return-home{
+    display: none;
+    align-self: center;
+    width: 219.64px;
+    height: 44px;
+    font-size: 21px;
+    align-items: center;
+    justify-content: center;
+    color: #818181;
+}
