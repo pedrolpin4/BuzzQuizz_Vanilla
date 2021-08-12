@@ -1,0 +1,18 @@
+.top-quizz img{
+    width: 100vw;
+    height: 10vh;
+    margin-bottom: -40px;
+}
+
+.top-quizz, .question p{
+    text-align: center; 
+}
+
+.question{
+    margin-top: 7vh;
+    background-color: aquamarine;  
+}
+
+.question img{
+    align-self: center ;
+}
