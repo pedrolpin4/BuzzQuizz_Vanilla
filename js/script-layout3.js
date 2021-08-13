@@ -1,10 +1,12 @@
-const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz";
+
 let myQuizz = {};
 
 
-let addBasicInfo = (title, url) => {
+let addBasicInfo = (title, url, nq, nl) => {
     myQuizz.title = title;
     myQuizz.image = url;
+    myQuizz.numberOfQuestions = nq;
+    myQuizz.numberOfLevels = nl;
 }
 
 let answerValidation = (nq, nl) => {
@@ -32,12 +34,13 @@ let createForms = (n) => {
 let addOtherQuestions = (nq) => {
     let otherQuestions = "";
     for(i = 0; i < (nq-1); i ++){
-        otherQuestions += `<div class="form2-empty">
+        otherQuestions += `
+        <div class="form2-empty q${i+2}">
             <p>Pergunta ${i+2}</p>
             <ion-icon name = "paper-plane-outline" onclick = "openForms(this)"></ion-icon>
         </div>`
     }
-    document.querySelector(".otherQuestions").innerHTML += otherQuestions;
+    document.querySelector(".other-questions").innerHTML += otherQuestions;
 }
 
 let goToQuestions = () => {
@@ -49,7 +52,7 @@ let goToQuestions = () => {
         createForms(1, numberOfQuestions);
         addOtherQuestions(numberOfQuestions);
     }
-    addBasicInfo(title, urlImage);
+    addBasicInfo(title, urlImage, numberOfQuestions, numberOfLevels);
 }
 
 let openForms = (button) => {
@@ -73,12 +76,46 @@ let openForms = (button) => {
     // consertar nth:child
 }
 
-let addQuestionsInfo = () => {
+let attributesOrganizer = (question) =>{
+    let inputs = document.querySelectorAll(`.q${i+1} input`);        
+    for (let f = 0; f < 10; f++){
+        switch (f){
+            case 0: question.title = inputs[f].value; break
+            case 1: question.color = inputs[f].value; break
+            case 2: question.answers = [{text: inputs[f].value, isCorrectAnswer: true}]; break
+            case 3: question.answers[0].image = inputs[f].value; break
+            case 4: question.answers.push({text: inputs[f].value, isCorrectAnswer: false}); break
+            case 5: question.answers[1].image = inputs[f].value; break
+            case 6: question.answers.push({text: inputs[f].value, isCorrectAnswer: false}); break
+            case 7: question.answers[2].image = inputs[f].value; break
+            case 8: question.answers.push({text: inputs[f].value, isCorrectAnswer: false}); break
+            case 9: question.answers[3].image = inputs[f].value; break
+        }
+    }
+    return question
+}
 
+let addQuestionsInfo = () => {
+    myQuizz.questions = [];
+    for(let i = 0; i < myQuizz.numberOfQuestions; i++){
+        let question = {};
+        myQuizz.questions.push(attributesOrganizer(question));
+    }
+    console.log(myQuizz);
 }
 
 let goToLevels = () => {
-    createForms(2);
+    addQuestionsInfo();
+    createForms(2);    
+    let otherLevels = "";
+    for(i = 0; i < (myQuizz.nl-1); i ++){
+        otherLevels += `
+        <div class="form3-empty">
+            <p>Nível ${i+2}</p>
+            <ion-icon name = "paper-plane-outline"></ion-icon>
+        </div>`
+    }
+    document.querySelector(".other-levels").innerHTML = otherLevels;
 }
 
 let goToSuccessPage = () => {
