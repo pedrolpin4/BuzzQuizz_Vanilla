@@ -83,7 +83,7 @@
 }
 
 .quizz{
-    display: flex;
+    display: none;
     width: 340px;
     height: 181px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://miuc.org/wp-content/uploads/2020/08/6-Reasons-why-you-should-learn-Programming-737x366.png);
@@ -94,7 +94,7 @@
 }
 
 .quizz div{
-    display: flex;
+    display: none;
     height: 54px;
     flex-wrap: wrap;
     align-items: center;

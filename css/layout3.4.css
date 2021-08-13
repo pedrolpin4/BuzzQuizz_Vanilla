@@ -1,16 +1,21 @@
 /* Layout 3.4 */
+.containerForm4{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .finished-message{
-    display: none;
+    display: flex;
     align-self: center;
     font-weight: bold;
     font-size: 21px;
-    margin-top: 71px;
+    margin-top: 140px;
     margin-bottom: 46px;
 }
 
 .my-quizz{
-    display: none;
+    display: flex;
     align-self: center;
     width: 340px;
     height: 181px;
@@ -32,7 +37,7 @@
 }
 
 .access-form{
-    display: none;
+    display: flex;
     width: 368.86px;
     font-size: 21px;
     align-self: center;
@@ -47,7 +52,7 @@
 }
 
 .return-home{
-    display: none;
+    display: flex;
     align-self: center;
     width: 219.64px;
     height: 44px;
@@ -55,4 +60,14 @@
     align-items: center;
     justify-content: center;
     color: #818181;
+}
+
+@media (max-width: 1100px) {
+    .finished-message{
+        margin-top: 108px;
+        margin-bottom: 29px;
+    }
+    .my-quizz {
+        margin-bottom: 24px;
+    }
 }
