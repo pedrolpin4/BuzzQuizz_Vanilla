@@ -1,7 +1,7 @@
 /* Creator box */
 
 .quizz-creator{
-    display: none;
+    display: flex;
     width: 1051px;
     height: 181px;
     margin: 77px 0px;
@@ -41,7 +41,7 @@
 /* My quizzes box */
 
 .my-quizz-box-title {
-    display: none;
+    display: flex;
     align-items: center;
     font-weight: bold;
     font-size: 20px;
@@ -59,7 +59,7 @@
 }
 
 .my-quizz-box{
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     width: 1067px;
     height: auto;
@@ -69,14 +69,14 @@
 /* Other quizzes box */
 
 .quizz-box {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     width: 1067px;
     height: auto;
 }
 
 .quizz-box-title {
-    display: none;
+    display: flex;
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 12px;
