@@ -1,4 +1,7 @@
 /* Creator box */
+.layout1{
+    display:none;
+}
 
 .quizz-creator{
     display: flex;
