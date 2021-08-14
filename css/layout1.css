@@ -4,7 +4,7 @@
 }
 
 .quizz-creator{
-    display: none;
+    display: flex;
     width: 1051px;
     height: 181px;
     margin: 146px 0px;
@@ -44,7 +44,7 @@
 /* My quizzes box */
 
 .my-quizz-box-title {
-    display: none;
+    display: flex;
     align-items: center;
     font-weight: bold;
     font-size: 20px;
@@ -62,7 +62,7 @@
 }
 
 .my-quizz-box{
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     width: 1067px;
     height: auto;
@@ -72,14 +72,14 @@
 /* Other quizzes box */
 
 .quizz-box {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     width: 1067px;
     height: auto;
 }
 
 .quizz-box-title {
-    display: none;
+    display: flex;
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 12px;
@@ -87,7 +87,7 @@
 }
 
 .quizz{
-    display: none;
+    display: flex;
     width: 340px;
     height: 181px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(); 
@@ -98,8 +98,8 @@
 }
 
 .quizz div{
-    display: none;
-    height: 54px;
+    display: flex;
+    height: auto;
     flex-wrap: wrap;
     align-items: center;
     color: #FAFAFA;

@@ -15,25 +15,11 @@
 }
 
 .my-quizz{
-    display: flex;
     align-self: center;
-    width: 340px;
-    height: 181px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(https://miuc.org/wp-content/uploads/2020/08/6-Reasons-why-you-should-learn-Programming-737x366.png);
-    border-radius: 5px;
-    margin-bottom: 45px;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 
-.my-quizz div {
-    display: flex;
-    height: 54px;
-    flex-wrap: wrap;
-    align-items: center;
-    color: #FAFAFA;
-    font-size: 19px;
-    margin: 0px 0px 7px 18px;
+.my-quizz div{
+    margin: 0px 10px 14px 10px;
 }
 
 .access-form{

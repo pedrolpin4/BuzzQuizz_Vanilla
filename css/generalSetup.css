@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #e5e5e5;
+    background: #fafafa;
 }
 
 textarea:focus, input:focus, select:focus {

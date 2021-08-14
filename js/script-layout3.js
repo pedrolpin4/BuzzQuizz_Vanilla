@@ -1,6 +1,5 @@
-
 let myQuizz = {};
-let URL = "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz";
+let acumulator = 0;
 
 let createForms = (n) => {
     let hide = document.querySelector(`.containerForm${n}`);
@@ -18,11 +17,11 @@ let addBasicInfo = () => {
             case 2: myQuizz.numberOfQuestions = Number(element.value); break
             case 3: myQuizz.numberOfLevels = Number(element.value); break
         }
-    })
-    console.log(myQuizz);
+    });
 }
 
 let verifyBasicInfo = () => {
+    // refatorar para switch
     if(myQuizz.numberOfQuestions < 3 || !(Number.isInteger(myQuizz.numberOfQuestions))){
         alert("Você deve escolher um número de perguntas inteiro e maior ou igual a 3");
         return false
@@ -46,7 +45,7 @@ let addOtherQuestions = (nq) => {
         otherQuestions += `
         <div class="form2-empty q${i+2}">
             <p>Pergunta ${i+2}</p>
-            <img src = "./assets/Vector.svg" onclick = "openLevelForms(this)"/>
+            <img src = "./assets/Vector.svg" onclick = "openQuestionForms(this)"/>
         </div>`
     }
     document.querySelector(".other-questions").innerHTML += otherQuestions;
@@ -74,10 +73,10 @@ let openQuestionForms = (button) => {
     <input type="text" placeholder="URL da imagem 2"></input>
     <input type="text" placeholder="Resposta incorreta 3"></input>
     <input type="text" placeholder="URL da imagem 3"></input>`
-    button.parentNode.classList.remove("form2-empty");
-    button.parentNode.classList.add("form2");
-    button.parentNode.innerHTML = div;
-    button.style.display = "none";
+    let parent = button.parentNode;
+    parent.classList.remove("form2-empty");
+    parent.classList.add("form2");
+    parent.innerHTML = div;
     // consertar nth:child
 }
 
@@ -105,12 +104,83 @@ let addQuestionsInfo = () => {
     for(let i = 0; i < myQuizz.numberOfQuestions; i++){
         let question = {};
         myQuizz.questions.push(questionAttributesOrganizer(question, i));
-    }
-    console.log(myQuizz);
+    };
+}
+
+let questionInputsValidation = (i) => {
+    let counter = 0;
+    let inputs = document.querySelectorAll(`.q${i+1} input`);        
+    inputs.forEach((element, f) => {
+        switch (f){
+            case 0: if(element.value.length >= 20){
+                    counter++;
+                } else {
+                    element.innerHTML += `O título de sua pergunta deve ter no mínimo 20 caracteres`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                }
+                break;
+
+            case 1: if(element.value[0] === "#" && element.value.length === 7){      
+                    counter++;
+                } else {
+                    element.innerHTML += `A cor de sua pergunta deve estar no padrão hexadecimal`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                } 
+                break;
+
+            case 2: if(element.value != ""){
+                    counter++;
+                } else {
+                    element.innerHTML += `O texto de sua resposta correta não pode estar vazio`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                } 
+                break;
+
+            case 3: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
+                    counter++;
+                } else {
+                    element.innerHTML += `Você deve inserir uma URL válida`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                } 
+                break;
+
+            case 4: if(element.value !== ""){
+                    counter++;
+                } else {
+                    element.innerHTML += `O texto de sua resposta correta não pode estar vazio`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                }
+                break;
+
+            case 5: if((element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://")){
+                    counter++;
+                } else {
+                    element.innerHTML += `Você deve inserir uma URL válida`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                }
+                break;
+         }
+    })
+    acumulator += counter;
 }
 
 let verifyQuestionsInfo = () => {
-    return true
+    for(let i = 0; i < myQuizz.numberOfQuestions; i++){
+      questionInputsValidation(i);
+    }
+    if(acumulator === 6*myQuizz.numberOfQuestions){
+        acumulator = 0;
+        return true
+    } else{
+        acumulator = 0;
+        return false
+    }
 }
 
 let addOtherLevels = () => {
@@ -138,11 +208,10 @@ let openLevelForms = (button) =>{
     div += `<input type="text" placeholder="Título do nível"></input>
     <input type="text" placeholder="% de acerto mínima"></input>
     <input type="text" placeholder="URL da imagem do nível"></input>
-    <input type="text" placeholder="Descrição do nível"></input>`
-    button.parentNode.classList.remove("form2-empty");
-    button.parentNode.classList.add("form2");
+    <input type="text" placeholder="Descrição do nível"></input>`; 
+    button.parentNode.classList.remove("form3-empty");
+    button.parentNode.classList.add("form3");
     button.parentNode.innerHTML = div;
-    button.style.display = "none";
 }
 
 let levelAttributesOrganizer = (level, i) => {
@@ -150,9 +219,9 @@ let levelAttributesOrganizer = (level, i) => {
     inputs.forEach((element, f) => {
         switch (f){
             case 0: level.title = element.value; break
-            case 1: level.image = element.value; break
-            case 2: level.text = element.value; break
-            case 3: level.minValue = element.value; break
+            case 1: level.minValue = element.value; break
+            case 2: level.image = element.value; break
+            case 3: level.text = element.value; break
         }
     })
     return level
@@ -163,12 +232,68 @@ let addLevelsInfo = () => {
     for(let i = 0; i < myQuizz.numberOfLevels; i++){
         let level = {};
         myQuizz.levels.push(levelAttributesOrganizer(level, i));
-    }
-    console.log(myQuizz);
+    };
 }
 
+let levelInputsValidation = (i) => {
+    let counter = 0;
+    let inputs = document.querySelectorAll(`.l${i+1} input`);        
+    inputs.forEach((element, f) => {
+        switch (f){
+            case 0: if(element.value.length >= 10){
+                    counter++;
+                } else {
+                    element.innerHTML += `O título de seu nível deve ter no mínimo 10 caracteres`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                };
+                break;
+
+            case 1: if(element.value >= 0 && element.value <= 100){      
+                    counter++;
+                } else {
+                    element.innerHTML += `A porcentagem miníma de acertos de seu nível deve ser um número entre 0 e 100`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                };
+                if(element.value == 0) {counter++};
+                break;
+
+            case 2: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
+                    counter++;
+                } else {
+                    element.innerHTML += `Você deve inserir uma url válida`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                }; 
+                break;
+
+            case 3: if(element.value.length >= 30){
+                    counter++;
+                } else {
+                    element.innerHTML += `A descrição do seu nível deve ter no mínimo 30 caracteres`;
+                    element.style.background = "#FFE9E9";
+                    element.style.color = "#EC362D";
+                };
+                break;
+         }
+    })
+    acumulator += counter;
+}
+
+
 let verifyLevelsInfo = () => {
-    return true
+    console.log(myQuizz.numberOfLevels);
+    for(let i = 0; i < myQuizz.numberOfLevels; i++){
+        levelInputsValidation(i);
+    };
+    if(acumulator > 4*myQuizz.numberOfLevels){
+        acumulator = 0;
+        return true
+    } else{
+        acumulator = 0;
+        return false
+    }
 }
 
 let changeMyQuizz = () => {
@@ -182,13 +307,25 @@ let changeMyQuizz = () => {
 
 let goToSuccessPage = () => {
     addLevelsInfo();
-    delete myQuizz.numberOfLevels;
-    delete myQuizz.numberOfQuestions;
     if(verifyLevelsInfo()){
-       /* axios.post(`${URL}/quizzes`, myQuizz)
-        .then()
-        .catch();*/
+        delete myQuizz.numberOfLevels;
+        delete myQuizz.numberOfQuestions;
         createForms(3);
         changeMyQuizz();
-    } 
+        serverWork();
+    }
+}
+
+let serverWork = () =>{
+    let myQuizzJson = JSON.stringify(myQuizz)
+    let promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes", myQuizzJson);
+    promise.then(console.log(promise));
+    promise.catch();
+}
+
+let goToLayout = (n) => {
+    let hide = document.querySelector(`.containerForm4`);
+    hide.style.display = "none";
+    let show = document.querySelector(`.layout${n}`);
+    show.style.display = "initial";
 }

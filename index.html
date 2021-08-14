@@ -26,7 +26,7 @@
     <header class="top-box">BuzzQuizz</header>
     <div class="container">
         <!-- início creator quizz -->
-        <div class="page1">
+        <div class="page1 layout1">
             <div class="quizz-creator">
                 <div class="creator-message"> Você não criou nenhum quizz ainda :(</div>   
                 <button class = "create-button">Criar Quizz</button>
@@ -156,13 +156,11 @@
         <!-- Início layout 3.4 -->
         <div class="containerForm4">
             <p class = "finished-message">Seu quizz está pronto</p>
-            <div class="my-quizz">
-                <div>
-                    O quão programador você é?
-                </div>
+            <div class="my-quizz quizz" onclick="goToLayout(2)">
+                <div></div>
             </div>
-            <div class = "access-form">Acessar Quizz</div>
-            <div class="return-home">Voltar para home </div>
+            <div class = "access-form" onclick="goToLayout(2)">Acessar Quizz</div>
+            <div class="return-home" onclick="goToLayout(1)">Voltar para home </div>
         </div>
         <!-- Fim layout 3.4 -->
     </div>
