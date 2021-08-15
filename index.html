@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/layout3.2.css">
     <link rel="stylesheet" href="./css/layout3.3.css">
     <link rel="stylesheet" href="./css/layout3.4.css">
+    <link rel="stylesheet" href="./css/transition.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/android-chrome-512x512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
@@ -110,73 +111,128 @@
             
         </div>
         <!-- fim tela 2 -->
-        <!-- fim other quizzes box -->
         <!-- Início layout 3.1 -->
-        <p class="form1-title">Comece pelo começo</p>
-        <div class="form1">
-            <input type="text" placeholder="Título do seu quizz"></input>
-            <input type="text" placeholder="URL da imagem do seu quizz"></input>
-            <input type="text" placeholder="Quantidade de perguntas do quizz"></input>
-            <input type="text" placeholder="Quantidade de níveis do quizz"></input>
+        <div class="container-form1">
+            <div class="form1-title">Comece pelo começo</div>
+            <div class="form1">
+                <div class="container-input">
+                    <input type="text" placeholder="Título do seu quizz"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem do seu quizz"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Quantidade de perguntas do quizz"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Quantidade de níveis do quizz"></input>
+                    <p></p>
+                </div>
+            </div>
+            <div class = "send-form1" onclick="goToQuestions()">Prosseguir pra criar perguntas</div>
         </div>
-        <div class = "send-form1">Prosseguir pra criar perguntas</div>
         <!-- Fim layout 3.1 --> 
         <!-- Início layout 3.2 -->
-        <p class="form2-title">Crie sua pergunta</p>
-        <div class="form2">
-            <p>Pergunta 1</p>
-            <input type="text" placeholder="Texto da pergunta"></input>
-            <input type="text" placeholder="Cor de fundo da pergunta"></input>
-            <p>Resposta correta</p>
-            <input type="text" placeholder="Resposta correta"></input>
-            <input type="text" placeholder="URL da imagem"></input>
-            <p>Respostas incorretas</p>
-            <input type="text" placeholder="Resposta incorreta 1"></input>
-            <input type="text" placeholder="URL da imagem 1"></input>
-            <input type="text" placeholder="Resposta incorreta 2"></input>
-            <input type="text" placeholder="URL da imagem 2"></input>
-            <input type="text" placeholder="Resposta incorreta 3"></input>
-            <input type="text" placeholder="URL da imagem 3"></input>
+        <div class = "container-form2">
+            <p class="form2-title">Crie sua pergunta</p>
+            <div class="form2 q1">
+                <p>Pergunta 1</p>
+                <div class="container-input">
+                    <input type="text" placeholder="Texto da pergunta"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Cor de fundo da pergunta"></input>
+                    <p></p>
+                </div>
+                <p>Resposta correta</p>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta correta"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem"></input>
+                    <p></p>
+                </div>
+                <p>Respostas incorretas</p>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta incorreta 1"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem 1"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta incorreta 2"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem 2"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta incorreta 3"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem 3"></input>
+                    <p></p>
+                </div>
+            </div>
+            <div class="other-questions"></div>
+            <div class = "send-form2" onclick="goToLevels()">Prosseguir pra criar níveis</div>
         </div>
-        <div class="form2-empty">
-            <p>Pergunta 2</p>
-            <ion-icon name = "paper-plane-outline"></ion-icon>
-        </div>
-        <div class="form2-empty">
-            <p>Pergunta 3</p>
-            <ion-icon name = "paper-plane-outline"></ion-icon>
-        </div>
-        <div class = "send-form2">Prosseguir pra criar níveis</div>
         <!-- Fim layout 3.2 -->
         <!-- Início layout 3.3 -->
-        <p class="form3-title">Agora, decida os níveis</p>
-        <div class="form3">
-            <p>Nível 1</p>
-            <input type="text" placeholder="Título do nível"></input>
-            <input type="text" placeholder="% de acerto mínima"></input>
-            <input type="text" placeholder="URL da imagem do nível"></input>
-            <input type="text" placeholder="Descrição do nível"></input>
+        <div class="container-form3">
+            <p class="form3-title">Agora, decida os níveis</p>
+            <div class="form3 l1">
+                <p>Nível 1</p>
+                <div class="container-input">
+                    <input type="text" placeholder="Título do nível"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="% de acerto mínima"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem do nível"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Descrição do nível"></input>
+                    <p></p>
+                </div>
+            </div>
+            <div class="other-levels"></div>
+            <div class = "send-form3" onclick="goToSuccessPage()">Finalizar quizz</div>
         </div>
-        <div class="form3-empty">
-            <p>Nível 2</p>
-            <ion-icon name = "paper-plane-outline"></ion-icon>
-        </div>
-        <div class="form3-empty">
-            <p>Nível 3</p>
-            <ion-icon name = "paper-plane-outline"></ion-icon>
-        </div>
-        <div class = "send-form3">Finalizar quizz</div>
         <!-- Fim layout 3.3 -->  
         <!-- Início layout 3.4 -->
-        <p class = "finished-message">Seu quizz está pronto</p>
-        <div class="my-quizz">
-            <div>
-                O quão programador você é?
+        <div class="container-form4">
+            <p class = "finished-message">Seu quizz está pronto</p>
+            <div class="my-quizz quizz" onclick="serverWork(2)">
+                <div></div>
             </div>
+            <div class = "access-form" onclick="serverWork(2)">Acessar Quizz</div>
+            <div class="return-home" onclick="serverWork(1)">Voltar para home </div>
         </div>
-        <div class = "access-form">Acessar Quizz</div>
-        <div class="return-home">Voltar para home </div>
         <!-- Fim layout 3.4 -->
+        <!-- Início tela de transição -->
+        <div class="loading-page">
+            <div class="spinner-container">
+                <div class="spinner">
+                    <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </div> 
+            <p>Carregando</p>
+        </div>
+        <!-- Fim tela de transição -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type = "module" src = "https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js" data-stencil-namespace="ionicons"></script>

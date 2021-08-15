@@ -1,21 +1,25 @@
 /* Layout 3.2 */
+.container-form2{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .form2-title{
-    display: none;
     align-self: center;
     font-weight: bold;
     font-size: 23px;
-    margin-top: 63px;
-    margin-bottom: 27px;
+    margin-top: 132px;
 }
 
 .form2{
-    display: none;
+    display: flex;
     align-self: center;
     padding-top: 13px;
     padding-bottom: 15px;
     background-color: #ffffff;
     width: 600px;
+    margin-top: 29px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -26,6 +30,10 @@
     font-size: 20px;
     align-self: flex-start;
     margin: 14px 0px 12px 18px;
+}
+
+.form2 img{
+    display: none;
 }
 
 .form2 input{
@@ -40,6 +48,16 @@
     padding-left: 18px;
 }
 
+.container-input{
+    width: 564px;  
+}
+
+.container-input p{
+    margin: 3px 0px 17px 0px;
+    font-size: 16px;
+    color: #EC362D;
+}
+
 .form2 input:nth-child(odd){
     margin-bottom: 32px;
 }
@@ -49,7 +67,7 @@
 }
 
 .form2-empty{
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     align-self: center;
@@ -64,13 +82,13 @@
     font-size: 20px;
 }
 
-.form2-empty ion-icon{
+.form2-empty img{
     width: 26px;
     height: 23px;
 }
 
 .send-form2 {
-    display: none;
+    display: flex;
     font-size: 21px;
     width: 368.86px;
     align-self: center;
@@ -86,11 +104,15 @@
 
 @media (max-width: 600px){
     .form2-title{
-        margin-top: 51px;
+        margin-top: 120px;
     }
 
     .form2{
         width: 100vw;
+    }
+
+    .container-input{
+        width: calc(100vw - 36px);
     }
 
     .form2 input{

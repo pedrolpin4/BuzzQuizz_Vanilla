@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #e5e5e5;
+    background: #fafafa;
 }
 
 textarea:focus, input:focus, select:focus {
@@ -16,23 +16,29 @@ textarea:focus, input:focus, select:focus {
     outline: 0;
 }
 
-input ::placeholder {
+::placeholder {
     color: #D1D1D1;
+    font-style: italic;
+    font-size: 19px;
 }
 
-input :-ms-input-placeholder{
+:-ms-input-placeholder{
     color: #D1D1D1;
+    font-style: italic;
+    font-size: 19px;
     opacity: 1;
 }
 
-input ::-ms-input-placeholder{
+::-ms-input-placeholder{
     color: #D1D1D1;
+    font-style: italic;
+    font-size: 19px;
 }
 
 .top-box{
     position: fixed;
-    right: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100vw;
     height: 69px;
     display: flex;
@@ -48,111 +54,4 @@ input ::-ms-input-placeholder{
 .container{
     display: flex;
     flex-direction: column;
-}
-
-
-
-@media (max-width: 1100px){
-    .container{
-        align-items: center;
-    }
-
-    .quizz-creator{
-        width: 340px;
-    }
-
-    .my-quizz-box{
-        width: 340px;
-    }
-
-    .my-quizz-box-title{
-        align-self: flex-start;
-    }
-
-    .my-quizz-box-title{
-        align-self: flex-start;
-        justify-content: space-between;
-        width: 340px;
-    }
-
-    .my-quizz-box-title p {
-        margin: none;
-    }
-
-    .quizz-box-title{
-        align-self: flex-start;
-    }
-
-    .quizz-box{
-        width: 340px;
-        flex-direction: column;
-    }
-
-    .quizz{
-        margin-right: 0px;
-    }
-
-    .form1-title{
-        margin-top: 37px;
-    }
-
-    .send-form1{
-        width: 324px;
-        font-size: 18px;
-        margin-top: 29px;
-    }
-}
-
-@media (max-width: 600px){
-    .form1{
-        width: 100vw;
-    }
-
-    .form1 input{
-        width: calc(100vw - 34px);
-    }
-
-    .form2-title{
-        margin-top: 51px;
-    }
-
-    .form2{
-        width: 100vw;
-    }
-
-    .form2 input{
-        width: calc(100vw - 36px);
-    }
-
-    .form2-empty{
-        width: 100vw;
-    }
-
-    .send-form2{
-        width: 324px;
-        font-size: 18px;
-        margin-top: 46px;
-    }
-
-    .form3-title{
-        margin-top: 51px;
-    }
-
-    .form3{
-        width: 100vw;
-    }
-
-    .form3 input{
-        width: calc(100vw - 36px);
-    }
-
-    .form3-empty{
-        width: 100vw;
-    }
-
-    .send-form3{
-        width: 324px;
-        font-size: 18px;
-        margin-top: 46px;
-    }
 }

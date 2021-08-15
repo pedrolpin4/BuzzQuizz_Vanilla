@@ -1,20 +1,25 @@
 /* Layout 3.3 */
+.container-form3{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .form3-title{
-    display: none;
     align-self: center;
     font-weight: bold;
     font-size: 20px;
-    margin-top: 63px;
-    margin-bottom: 43px;
+    margin-top: 132px;
+    margin-bottom: 14px;
 }
 
 .form3{
-    display: none;
+    display: flex;
     align-self: center;
     padding-top: 21px;
     padding-bottom: 15px;
     background-color: #ffffff;
+    margin-top: 29px;
     width: 600px;
     flex-direction: column;
     align-items: center;
@@ -28,6 +33,11 @@
     margin: 0px 0px 12px 18px;
 }
 
+.form3 img{
+    display: none;
+}
+
+
 .form3 input{
     width: 564px;
     height: 46px;
@@ -40,12 +50,22 @@
     padding-left: 23px;
 }
 
+.container-input{
+    width: 564px;  
+}
+
+.container-input p{
+    margin: 3px 0px 17px 0px;
+    font-size: 16px;
+    color: #EC362D;
+}
+
 .send-form3 {
-    display: none;
+    display: flex;
     font-size: 21px;
     width: 368.86px;
-    align-self: center;
     align-items: center;
+    align-self: center;
     justify-content: center;
     height: 54px;
     margin-top: 75px;
@@ -56,10 +76,10 @@
 }
 
 .form3-empty{
-    display: none;
+    display: flex;
+    align-self: center;
     align-items: center;
     justify-content: space-between;
-    align-self: center;
     margin-top: 24px;
     padding: 25px 20px;
     width: 600px;
@@ -71,14 +91,14 @@
     font-size: 20px;
 }
 
-.form3-empty ion-icon{
+.form3-empty img{
     width: 26px;
     height: 23px;
 }
 
 @media (max-width: 600px){
     .form3-title{
-        margin-top: 51px;
+        margin-top: 120px;
     }
 
     .form3{
@@ -86,6 +106,10 @@
     }
 
     .form3 input{
+        width: calc(100vw - 36px);
+    }
+
+    .container-input{
         width: calc(100vw - 36px);
     }
 

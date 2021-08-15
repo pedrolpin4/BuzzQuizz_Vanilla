@@ -99,7 +99,7 @@
 
 .quizz div{
     display: flex;
-    height: 54px;
+    height: auto;
     flex-wrap: wrap;
     align-items: center;
     color: #FAFAFA;
