@@ -49,11 +49,11 @@
 }
 
 .question img{
+    display: flex;
     width: 331.94px;
     height: 175.2px;    
     padding: 20px 24px 7.7px 36px;
 }
-
 
 .top{
     display:flex;
