@@ -2,9 +2,9 @@ let myQuizz = {};
 let acumulator = 0;
 
 const createForms = (n) => {
-    let hide = document.querySelector(`.containerForm${n}`);
+    let hide = document.querySelector(`.container-form${n}`);
     hide.style.display = "none";
-    let show = document.querySelector(`.containerForm${n+1}`);
+    let show = document.querySelector(`.container-form${n+1}`);
     show.style.display = "flex";
 }
 
@@ -28,26 +28,31 @@ const verifyBasicInfo = () => {
             case 0: if(element.value.length >= 20 && element.value.length <= 65){
                     counter++;   
                 }else {
-                    element.innerHTML += `O título de seu quizz deve ter no mínimo 20 caracteres`;
+                    element.parentNode.childNodes[3].innerHTML += `O título de seu quizz deve ter no mínimo 20 caracteres`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px"
                 } break;
             case 1: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
-                    counter++;   
+                    counter++;
+                    console.log(element.parentNode.childNodes[3]);   
                 } else {
-                    element.innerHTML += `Você deve inserir uma URL válida`;
+                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px"
                 } break;
             case 2: if(element.value >= 3 && !!(Number.isInteger(Number(element.value)))) {
                     counter++;   
                 } else {
-                    element.innerHTML += `O quizz deve ter pelo menos 3 perguntas`;
+                    element.parentNode.childNodes[3].innerHTML += `O quizz deve ter pelo menos 3 perguntas`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px"
                 } break;
             case 3: if(element.value >= 2 && !!(Number.isInteger(Number(element.value)))){
                     counter++;   
                 } else {
-                    element.innerHTML += `O quizz deve ter pelo menos 2 níveis`;
+                    element.parentNode.childNodes[3].innerHTML += `O quizz deve ter pelo menos 2 níveis`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px"
                 } break;
         }
     })
@@ -81,18 +86,50 @@ const goToQuestions = () => {
 
 const openQuestionForms = (button) => {
     let div = button.parentNode.innerHTML;
-    div += `<input type="text" placeholder="Texto da pergunta"></input>
-    <input type="text" placeholder="Cor de fundo da pergunta"></input>
+    div += `
+    <div class = "container-input">
+        <input type="text" placeholder="Texto da pergunta">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="Cor de fundo da pergunta">
+        <p></p>
+    </div>
     <p>Resposta correta</p>
-    <input type="text" placeholder="Resposta correta"></input>
-    <input type="text" placeholder="URL da imagem"></input>
+    <div class = "container-input">
+        <input type="text" placeholder="Resposta correta">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="URL da imagem">
+        <p></p>
+    </div>
     <p>Respostas incorretas</p>
-    <input type="text" placeholder="Resposta incorreta 1"></input>
-    <input type="text" placeholder="URL da imagem 1"></input>
-    <input type="text" placeholder="Resposta incorreta 2"></input>
-    <input type="text" placeholder="URL da imagem 2"></input>
-    <input type="text" placeholder="Resposta incorreta 3"></input>
-    <input type="text" placeholder="URL da imagem 3"></input>`
+    <div class = "container-input">
+        <input type="text" placeholder="Resposta incorreta 1">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="URL da imagem 1">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="Resposta incorreta 2">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="URL da imagem 2">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="Resposta incorreta 3">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="URL da imagem 3">
+        <p></p>
+    </div> `
+
     let parent = button.parentNode;
     parent.classList.remove("form2-empty");
     parent.classList.add("form2");
@@ -135,48 +172,54 @@ const questionInputsValidation = (i) => {
             case 0: if(element.value.length >= 20){
                     counter++;
                 } else {
-                    element.innerHTML += `O título de sua pergunta deve ter no mínimo 20 caracteres`;
+                    element.parentNode.childNodes[3].innerHTML += `O título de sua pergunta deve ter no mínimo 20 caracteres`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 }
                 break;
 
             case 1: if(element.value[0] === "#" && element.value.length === 7){      
                     counter++;
                 } else {
-                    element.innerHTML += `A cor de sua pergunta deve estar no padrão hexadecimal`;
+                    element.parentNode.childNodes[3].innerHTML += `A cor de sua pergunta deve estar no padrão hexadecimal`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 } 
                 break;
 
             case 2: if(element.value != ""){
                     counter++;
                 } else {
-                    element.innerHTML += `O texto de sua resposta correta não pode estar vazio`;
+                    element.parentNode.childNodes[3].innerHTML += `O texto de sua resposta correta não pode estar vazio`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 } 
                 break;
 
             case 3: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
                     counter++;
                 } else {
-                    element.innerHTML += `Você deve inserir uma URL válida`;
+                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 } 
                 break;
 
             case 4: if(element.value !== ""){
                     counter++;
                 } else {
-                    element.innerHTML += `O texto de sua resposta correta não pode estar vazio`;
+                    element.parentNode.childNodes[3].innerHTML += `Você deve ter pelo menos uma resposta incorreta`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 }
                 break;
 
             case 5: if((element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://")){
                     counter++;
                 } else {
-                    element.innerHTML += `Você deve inserir uma URL válida`;
+                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 }
                 break;
          }
@@ -220,10 +263,24 @@ const goToLevels = () => {
 
 const openLevelForms = (button) =>{
     let div = button.parentNode.innerHTML;
-    div += `<input type="text" placeholder="Título do nível"></input>
-    <input type="text" placeholder="% de acerto mínima"></input>
-    <input type="text" placeholder="URL da imagem do nível"></input>
-    <input type="text" placeholder="Descrição do nível"></input>`; 
+    div += `
+    <div class = "container-input">
+        <input type="text" placeholder="Título do nível">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="% de acerto mínima">
+        <p></p>
+    </div>
+    <div class = "container-input">
+        <input type="text" placeholder="URL da imagem do nível">
+        <p></p>
+    </div> 
+    <div class = "container-input">
+        <input type="text" placeholder="Descrição do nível">
+        <p></p> 
+    </div>`;
+    
     button.parentNode.classList.remove("form3-empty");
     button.parentNode.classList.add("form3");
     button.parentNode.innerHTML = div;
@@ -258,16 +315,18 @@ let levelInputsValidation = (i) => {
             case 0: if(element.value.length >= 10){
                     counter++;
                 } else {
-                    element.innerHTML += `O título de seu nível deve ter no mínimo 10 caracteres`;
+                    element.parentNode.childNodes[3].innerHTML += `O título de seu nível deve ter no mínimo 10 caracteres`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 };
                 break;
 
-            case 1: if(element.value >= 0 && element.value <= 100){      
+            case 1: if(( Number(element.value) > 0 || element.value === "0" )  && ( Number(element.value) < 100 || element.value === "100")) {      
                     counter++;
                 } else {
-                    element.innerHTML += `A porcentagem miníma de acertos de seu nível deve ser um número entre 0 e 100`;
+                    element.parentNode.childNodes[3].innerHTML += `A porcentagem miníma de acertos de seu nível deve ser entre 0 e 100`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 };
                 if(element.value == 0) {counter++};
                 break;
@@ -275,15 +334,17 @@ let levelInputsValidation = (i) => {
             case 2: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
                     counter++;
                 } else {
-                    element.innerHTML += `Você deve inserir uma url válida`;
+                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma url válida`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 }; 
                 break;
-            case 3: if(element.value.length >= 30){
+            case 3: if(element.value.length > 30 || element.value.length == 30 ){
                     counter++;
                 } else {
-                    element.innerHTML += `A descrição do seu nível deve ter no mínimo 30 caracteres`;
+                    element.parentNode.childNodes[3].innerHTML += `A descrição do seu nível deve ter no mínimo 30 caracteres`;
                     element.style.background = "#FFE9E9";
+                    element.style.marginBottom = "0px";
                 };
                 break;
          }
@@ -326,7 +387,7 @@ const goToSuccessPage = () => {
 }
 
 const serverWork = (n) =>{
-    let hide = document.querySelector(`.containerForm4`);
+    let hide = document.querySelector(`.container-form4`);
     hide.style.display = "none";
     let show = document.querySelector(`.loading-page`);
     show.style.display = "flex";
@@ -346,6 +407,6 @@ const treatError = () => {
     alert("deu xabu!")
     let hide = document.querySelector(`.loading-page`);
     hide.style.display = "none";
-    let show = document.querySelector(`.containerForm4`);
+    let show = document.querySelector(`.container-form4`);
     show.style.display = "flex";
 }

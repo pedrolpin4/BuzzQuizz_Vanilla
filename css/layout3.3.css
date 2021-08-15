@@ -1,5 +1,5 @@
 /* Layout 3.3 */
-.containerForm3{
+.container-form3{
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -50,6 +50,16 @@
     padding-left: 23px;
 }
 
+.container-input{
+    width: 564px;  
+}
+
+.container-input p{
+    margin: 3px 0px 17px 0px;
+    font-size: 16px;
+    color: #EC362D;
+}
+
 .send-form3 {
     display: flex;
     font-size: 21px;
@@ -96,6 +106,10 @@
     }
 
     .form3 input{
+        width: calc(100vw - 36px);
+    }
+
+    .container-input{
         width: calc(100vw - 36px);
     }
 

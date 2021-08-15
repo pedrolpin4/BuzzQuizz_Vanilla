@@ -1,5 +1,5 @@
 /* Layout 3.2 */
-.containerForm2{
+.container-form2{
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -46,6 +46,16 @@
     border-radius: 5px;
     margin-bottom: 14px;
     padding-left: 18px;
+}
+
+.container-input{
+    width: 564px;  
+}
+
+.container-input p{
+    margin: 3px 0px 17px 0px;
+    font-size: 16px;
+    color: #EC362D;
 }
 
 .form2 input:nth-child(odd){
@@ -99,6 +109,10 @@
 
     .form2{
         width: 100vw;
+    }
+
+    .container-input{
+        width: calc(100vw - 36px);
     }
 
     .form2 input{

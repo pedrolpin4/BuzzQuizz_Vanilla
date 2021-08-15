@@ -112,7 +112,7 @@
         </div>
         <!-- fim tela 2 -->
         <!-- Início layout 3.1 -->
-        <div class="containerForm1">
+        <div class="container-form1">
             <div class="form1-title">Comece pelo começo</div>
             <div class="form1">
                 <div class="container-input">
@@ -136,43 +136,85 @@
         </div>
         <!-- Fim layout 3.1 --> 
         <!-- Início layout 3.2 -->
-        <div class = "containerForm2">
+        <div class = "container-form2">
             <p class="form2-title">Crie sua pergunta</p>
             <div class="form2 q1">
                 <p>Pergunta 1</p>
-                <input type="text" placeholder="Texto da pergunta"></input>
-                <input type="text" placeholder="Cor de fundo da pergunta"></input>
+                <div class="container-input">
+                    <input type="text" placeholder="Texto da pergunta"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Cor de fundo da pergunta"></input>
+                    <p></p>
+                </div>
                 <p>Resposta correta</p>
-                <input type="text" placeholder="Resposta correta"></input>
-                <input type="text" placeholder="URL da imagem"></input>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta correta"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem"></input>
+                    <p></p>
+                </div>
                 <p>Respostas incorretas</p>
-                <input type="text" placeholder="Resposta incorreta 1"></input>
-                <input type="text" placeholder="URL da imagem 1"></input>
-                <input type="text" placeholder="Resposta incorreta 2"></input>
-                <input type="text" placeholder="URL da imagem 2"></input>
-                <input type="text" placeholder="Resposta incorreta 3"></input>
-                <input type="text" placeholder="URL da imagem 3"></input>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta incorreta 1"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem 1"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta incorreta 2"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem 2"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Resposta incorreta 3"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem 3"></input>
+                    <p></p>
+                </div>
             </div>
             <div class="other-questions"></div>
             <div class = "send-form2" onclick="goToLevels()">Prosseguir pra criar níveis</div>
         </div>
         <!-- Fim layout 3.2 -->
         <!-- Início layout 3.3 -->
-        <div class="containerForm3">
+        <div class="container-form3">
             <p class="form3-title">Agora, decida os níveis</p>
             <div class="form3 l1">
                 <p>Nível 1</p>
-                <input type="text" placeholder="Título do nível"><div class="error-message"></div></input>
-                <input type="text" placeholder="% de acerto mínima"><div class="error-message"></div></input>
-                <input type="text" placeholder="URL da imagem do nível"><div class="error-message"></div></input>
-                <input type="text" placeholder="Descrição do nível"><div class="error-message"></div></input>
+                <div class="container-input">
+                    <input type="text" placeholder="Título do nível"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="% de acerto mínima"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="URL da imagem do nível"></input>
+                    <p></p>
+                </div>
+                <div class="container-input">
+                    <input type="text" placeholder="Descrição do nível"></input>
+                    <p></p>
+                </div>
             </div>
             <div class="other-levels"></div>
             <div class = "send-form3" onclick="goToSuccessPage()">Finalizar quizz</div>
         </div>
         <!-- Fim layout 3.3 -->  
         <!-- Início layout 3.4 -->
-        <div class="containerForm4">
+        <div class="container-form4">
             <p class = "finished-message">Seu quizz está pronto</p>
             <div class="my-quizz quizz" onclick="serverWork(2)">
                 <div></div>
