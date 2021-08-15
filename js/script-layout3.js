@@ -1,14 +1,14 @@
 let myQuizz = {};
 let acumulator = 0;
 
-let createForms = (n) => {
+const createForms = (n) => {
     let hide = document.querySelector(`.containerForm${n}`);
     hide.style.display = "none";
     let show = document.querySelector(`.containerForm${n+1}`);
     show.style.display = "flex";
 }
 
-let addBasicInfo = () => {
+const addBasicInfo = () => {
     let inputs = document.querySelectorAll(".form1 input");
     inputs.forEach((element, i) =>{
         switch(i){
@@ -20,26 +20,46 @@ let addBasicInfo = () => {
     });
 }
 
-let verifyBasicInfo = () => {
-    // refatorar para switch
-    if(myQuizz.numberOfQuestions < 3 || !(Number.isInteger(myQuizz.numberOfQuestions))){
-        alert("Você deve escolher um número de perguntas inteiro e maior ou igual a 3");
-        return false
-    } else if (myQuizz.numberOfLevels < 2 || !(Number.isInteger(myQuizz.numberOfLevels))){
-        alert("Você deve escolher um número de níveis inteiro e maior ou igual a 2");
-        return false
-    } else if(myQuizz.title.length < 20 || myQuizz.title.length > 65){
-        alert ("Seu quizz deve ter um título com mais de 20 caracteres")
-        return false
-    } else if (myQuizz.image.substring(0,7) !== "http://" && myQuizz.image.substring(0,8) !== "https://"){
-        alert("Escreva uma url de imagem válida")
-        return  false
-    }  else{
+const verifyBasicInfo = () => {
+    let counter = 0;
+    let inputs = document.querySelectorAll(".form1 input");
+    inputs.forEach((element, i) => {
+        switch(i){
+            case 0: if(element.value.length >= 20 && element.value.length <= 65){
+                    counter++;   
+                }else {
+                    element.innerHTML += `O título de seu quizz deve ter no mínimo 20 caracteres`;
+                    element.style.background = "#FFE9E9";
+                } break;
+            case 1: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
+                    counter++;   
+                } else {
+                    element.innerHTML += `Você deve inserir uma URL válida`;
+                    element.style.background = "#FFE9E9";
+                } break;
+            case 2: if(element.value >= 3 && !!(Number.isInteger(Number(element.value)))) {
+                    counter++;   
+                } else {
+                    element.innerHTML += `O quizz deve ter pelo menos 3 perguntas`;
+                    element.style.background = "#FFE9E9";
+                } break;
+            case 3: if(element.value >= 2 && !!(Number.isInteger(Number(element.value)))){
+                    counter++;   
+                } else {
+                    element.innerHTML += `O quizz deve ter pelo menos 2 níveis`;
+                    element.style.background = "#FFE9E9";
+                } break;
+        }
+    })
+
+    if(counter === 4){
         return true
+    } else {
+        return false
     }
 }
 
-let addOtherQuestions = (nq) => {
+const addOtherQuestions = (nq) => {
     let otherQuestions = "";
     for(i = 0; i < (nq-1); i ++){
         otherQuestions += `
@@ -51,7 +71,7 @@ let addOtherQuestions = (nq) => {
     document.querySelector(".other-questions").innerHTML += otherQuestions;
 }
 
-let goToQuestions = () => {
+const goToQuestions = () => {
     addBasicInfo();
     if (verifyBasicInfo()){
         createForms(1);
@@ -59,7 +79,7 @@ let goToQuestions = () => {
     }
 }
 
-let openQuestionForms = (button) => {
+const openQuestionForms = (button) => {
     let div = button.parentNode.innerHTML;
     div += `<input type="text" placeholder="Texto da pergunta"></input>
     <input type="text" placeholder="Cor de fundo da pergunta"></input>
@@ -80,7 +100,7 @@ let openQuestionForms = (button) => {
     // consertar nth:child
 }
 
-let questionAttributesOrganizer = (question, i) => {
+const questionAttributesOrganizer = (question, i) => {
     let inputs = document.querySelectorAll(`.q${i+1} input`);        
     inputs.forEach((element, f) => {
         switch (f){
@@ -99,7 +119,7 @@ let questionAttributesOrganizer = (question, i) => {
     return question
 }
 
-let addQuestionsInfo = () => {
+const addQuestionsInfo = () => {
     myQuizz.questions = [];
     for(let i = 0; i < myQuizz.numberOfQuestions; i++){
         let question = {};
@@ -107,7 +127,7 @@ let addQuestionsInfo = () => {
     };
 }
 
-let questionInputsValidation = (i) => {
+const questionInputsValidation = (i) => {
     let counter = 0;
     let inputs = document.querySelectorAll(`.q${i+1} input`);        
     inputs.forEach((element, f) => {
@@ -117,7 +137,6 @@ let questionInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `O título de sua pergunta deve ter no mínimo 20 caracteres`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 }
                 break;
 
@@ -126,7 +145,6 @@ let questionInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `A cor de sua pergunta deve estar no padrão hexadecimal`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 } 
                 break;
 
@@ -135,7 +153,6 @@ let questionInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `O texto de sua resposta correta não pode estar vazio`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 } 
                 break;
 
@@ -144,7 +161,6 @@ let questionInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 } 
                 break;
 
@@ -153,7 +169,6 @@ let questionInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `O texto de sua resposta correta não pode estar vazio`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 }
                 break;
 
@@ -162,15 +177,15 @@ let questionInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 }
                 break;
          }
+         //add case url válida ou vazio
     })
     acumulator += counter;
 }
 
-let verifyQuestionsInfo = () => {
+const verifyQuestionsInfo = () => {
     for(let i = 0; i < myQuizz.numberOfQuestions; i++){
       questionInputsValidation(i);
     }
@@ -183,7 +198,7 @@ let verifyQuestionsInfo = () => {
     }
 }
 
-let addOtherLevels = () => {
+const addOtherLevels = () => {
     let otherLevels = "";
     for(i = 0; i < (myQuizz.numberOfLevels-1); i ++){
         otherLevels += `
@@ -195,7 +210,7 @@ let addOtherLevels = () => {
     document.querySelector(".other-levels").innerHTML = otherLevels;
 }
 
-let goToLevels = () => {
+const goToLevels = () => {
     addQuestionsInfo();
     if(verifyQuestionsInfo()){
         createForms(2);
@@ -203,7 +218,7 @@ let goToLevels = () => {
     };    
 }
 
-let openLevelForms = (button) =>{
+const openLevelForms = (button) =>{
     let div = button.parentNode.innerHTML;
     div += `<input type="text" placeholder="Título do nível"></input>
     <input type="text" placeholder="% de acerto mínima"></input>
@@ -214,7 +229,7 @@ let openLevelForms = (button) =>{
     button.parentNode.innerHTML = div;
 }
 
-let levelAttributesOrganizer = (level, i) => {
+const levelAttributesOrganizer = (level, i) => {
     let inputs = document.querySelectorAll(`.l${i+1} input`);        
     inputs.forEach((element, f) => {
         switch (f){
@@ -227,7 +242,7 @@ let levelAttributesOrganizer = (level, i) => {
     return level
 }
 
-let addLevelsInfo = () => {
+const addLevelsInfo = () => {
     myQuizz.levels = [];
     for(let i = 0; i < myQuizz.numberOfLevels; i++){
         let level = {};
@@ -245,7 +260,6 @@ let levelInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `O título de seu nível deve ter no mínimo 10 caracteres`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 };
                 break;
 
@@ -254,7 +268,6 @@ let levelInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `A porcentagem miníma de acertos de seu nível deve ser um número entre 0 e 100`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 };
                 if(element.value == 0) {counter++};
                 break;
@@ -264,16 +277,13 @@ let levelInputsValidation = (i) => {
                 } else {
                     element.innerHTML += `Você deve inserir uma url válida`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 }; 
                 break;
-
             case 3: if(element.value.length >= 30){
                     counter++;
                 } else {
                     element.innerHTML += `A descrição do seu nível deve ter no mínimo 30 caracteres`;
                     element.style.background = "#FFE9E9";
-                    element.style.color = "#EC362D";
                 };
                 break;
          }
@@ -282,7 +292,7 @@ let levelInputsValidation = (i) => {
 }
 
 
-let verifyLevelsInfo = () => {
+const verifyLevelsInfo = () => {
     console.log(myQuizz.numberOfLevels);
     for(let i = 0; i < myQuizz.numberOfLevels; i++){
         levelInputsValidation(i);
@@ -296,7 +306,7 @@ let verifyLevelsInfo = () => {
     }
 }
 
-let changeMyQuizz = () => {
+const changeMyQuizz = () => {
     let backgroundImage = document.querySelector(".my-quizz");
     let text = myQuizz.title;
     document.querySelector(".my-quizz div").innerHTML = text;
@@ -305,27 +315,37 @@ let changeMyQuizz = () => {
     backgroundImage.style.backgroundRepeat = "no-repeat";
 }
 
-let goToSuccessPage = () => {
+const goToSuccessPage = () => {
     addLevelsInfo();
     if(verifyLevelsInfo()){
         delete myQuizz.numberOfLevels;
         delete myQuizz.numberOfQuestions;
         createForms(3);
         changeMyQuizz();
-        serverWork();
     }
 }
 
-let serverWork = () =>{
-    let myQuizzJson = JSON.stringify(myQuizz)
-    let promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes", myQuizzJson);
-    promise.then(console.log(promise));
-    promise.catch();
+const serverWork = (n) =>{
+    let hide = document.querySelector(`.containerForm4`);
+    hide.style.display = "none";
+    let show = document.querySelector(`.loading-page`);
+    show.style.display = "flex";
+    const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes", myQuizz);
+    promise.then(goToLayout, n);
+    promise.catch(treatError);
 }
 
-let goToLayout = (n) => {
-    let hide = document.querySelector(`.containerForm4`);
+const goToLayout = (n) => {
+    let hide = document.querySelector(`.loading-page`);
     hide.style.display = "none";
     let show = document.querySelector(`.layout${n}`);
     show.style.display = "initial";
+}
+
+const treatError = () => {
+    alert("deu xabu!")
+    let hide = document.querySelector(`.loading-page`);
+    hide.style.display = "none";
+    let show = document.querySelector(`.containerForm4`);
+    show.style.display = "flex";
 }

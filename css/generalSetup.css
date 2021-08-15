@@ -16,17 +16,23 @@ textarea:focus, input:focus, select:focus {
     outline: 0;
 }
 
-input ::placeholder {
+::placeholder {
     color: #D1D1D1;
+    font-style: italic;
+    font-size: 19px;
 }
 
-input :-ms-input-placeholder{
+:-ms-input-placeholder{
     color: #D1D1D1;
+    font-style: italic;
+    font-size: 19px;
     opacity: 1;
 }
 
-input ::-ms-input-placeholder{
+::-ms-input-placeholder{
     color: #D1D1D1;
+    font-style: italic;
+    font-size: 19px;
 }
 
 .top-box{
