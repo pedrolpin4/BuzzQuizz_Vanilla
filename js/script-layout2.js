@@ -1,5 +1,5 @@
 let correctAnswer = 0;
-let thisQuizz = {}
+let thisQuizz = {};
 let click= 0;
 let numberOfQuestions;
 
@@ -103,10 +103,11 @@ function showQuizz(quizz){
 
 
 
-function processResponse(element){
-    //pegar o elemento pai da opção que foi clicada, que é 
+function processResponse(element){       
+
     let parentElement = element.parentNode;
     const classCapture = parentElement.querySelectorAll(".options")
+
 
     for (let i = 0; i < classCapture.length; i++){
 
@@ -114,28 +115,40 @@ function processResponse(element){
         let optionImg = classCapture[i].querySelector("img")
         let optionBoolean = classCapture[i]
 
-        if (optionBoolean.classList.contains("booleanTrue")) {
-            optionText.classList.remove("black")
-            optionText.classList.add("green")
-            if (optionBoolean === element){
-                correctAnswer++
-                click++
+        if (optionText.classList.contains("black")){           
+            
+            if (optionBoolean.classList.contains("booleanTrue")) {
+                optionText.classList.remove("black")
+                optionText.classList.add("green")
+                if (optionBoolean === element){
+                    correctAnswer++
+                    click++
+                } else{
+                    click++
+                }
             }
-            else{
-                click++
+            else {
+                optionText.classList.remove("black")
+                optionText.classList.add("red")
             }
-            if(click == numberOfQuestions){
-                measureResults();
+    
+            if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
+                optionImg.classList.add("opacity") //ganha esbranquiçado
             }
-        }
 
-        if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
-            optionImg.classList.add("opacity") //ganha esbranquiçado
-        }
+           setTimeout(scrollIntoView, 2000, parentElement);
+        }     
+    } 
+   
+    if (click === thisQuizz.data.questions.length){
+        measureResults();
     }
+
+
+    console.log(correctAnswer, click)
 }
 
-let restartQuizz = () => {
+const restartQuizz = () => {
     showQuizz(thisQuizz);
     let result = document.querySelector(".result");
     result.style.display = "none";
@@ -143,11 +156,19 @@ let restartQuizz = () => {
     correctAnswer = 0;
 }
     
-    
-     
-//esbranquiçar imagens que não foram clicadas
-//deixar legenda verde da resposta correta
+
+const scrollIntoView = (thisQuestion) => {
+    let allQuestions = document.querySelectorAll(".question");
+    console.log(allQuestions);
+    console.log(thisQuestion);
+    console.log(thisQuestion.parentNode);
+    allQuestions.forEach((element, index) => {
+        if(element === thisQuestion.parentNode){
+                allQuestions[index+1].scrollIntoView();
+        }      
+    })
+}
+
 //scrollar pra proxima pergunta
-//guarda a resposta em algum objeto que mais tarde sera necessario para verificação do resultado
 
 

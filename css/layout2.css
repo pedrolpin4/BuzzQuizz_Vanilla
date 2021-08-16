@@ -53,6 +53,10 @@
     color: #000000;
 }
 
+.red{
+    color: red;
+}
+
 .green{
     color:green;
 }
@@ -251,3 +255,4 @@
         line-height: 21px;
         margin-bottom: 66px;
     }
+}
