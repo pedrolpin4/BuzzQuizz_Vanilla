@@ -110,7 +110,7 @@ const openQuestionForms = (button) => {
         <input type="text" placeholder="Resposta incorreta 1">
         <p></p>
     </div>
-    <div class = "container-input">
+    <div class = "container-input higher-margin">
         <input type="text" placeholder="URL da imagem 1">
         <p></p>
     </div>
@@ -118,7 +118,7 @@ const openQuestionForms = (button) => {
         <input type="text" placeholder="Resposta incorreta 2">
         <p></p>
     </div>
-    <div class = "container-input">
+    <div class = "container-input higher-margin">
         <input type="text" placeholder="URL da imagem 2">
         <p></p>
     </div>
@@ -181,6 +181,7 @@ const questionInputsValidation = (i) => {
             case 0: if(element.value.length >= 20){
                     counter++;
                 } else {
+                    element.parentNode.childNodes[3].style.display = "flex";
                     element.parentNode.childNodes[3].innerHTML += `O título de sua pergunta deve ter no mínimo 20 caracteres`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
@@ -190,6 +191,7 @@ const questionInputsValidation = (i) => {
             case 1: if(element.value[0] === "#" && element.value.length === 7){      
                     counter++;
                 } else {
+                    element.parentNode.childNodes[3].style.display = "flex";
                     element.parentNode.childNodes[3].innerHTML += `A cor de sua pergunta deve estar no padrão hexadecimal`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
@@ -199,6 +201,7 @@ const questionInputsValidation = (i) => {
             case 2: if(element.value != ""){
                     counter++;
                 } else {
+                    element.parentNode.childNodes[3].style.display = "flex";
                     element.parentNode.childNodes[3].innerHTML += `O texto de sua resposta correta não pode estar vazio`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
@@ -208,6 +211,7 @@ const questionInputsValidation = (i) => {
             case 3: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
                     counter++;
                 } else {
+                    element.parentNode.childNodes[3].style.display = "flex";
                     element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
@@ -217,6 +221,7 @@ const questionInputsValidation = (i) => {
             case 4: if(element.value !== ""){
                     counter++;
                 } else {
+                    element.parentNode.childNodes[3].style.display = "flex";
                     element.parentNode.childNodes[3].innerHTML += `Você deve ter pelo menos uma resposta incorreta`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
@@ -226,6 +231,7 @@ const questionInputsValidation = (i) => {
             case 5: if((element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://")){
                     counter++;
                 } else {
+                    element.parentNode.childNodes[3].style.display = "flex";
                     element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";

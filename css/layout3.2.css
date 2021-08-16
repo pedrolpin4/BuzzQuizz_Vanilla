@@ -48,22 +48,19 @@
     padding-left: 18px;
 }
 
+.higher-margin{
+    margin-bottom: 32px;
+}
+
 .container-input{
     width: 564px;  
 }
 
 .container-input p{
+    display: none;
     margin: 3px 0px 17px 0px;
     font-size: 16px;
     color: #EC362D;
-}
-
-.form2 input:nth-child(2){
-    margin-bottom: 32px;
-}
-
-.form2 input:nth-child(-2n+5){
-    margin-bottom: 14px;
 }
 
 .form2-empty{

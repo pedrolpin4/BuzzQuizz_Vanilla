@@ -2,6 +2,8 @@ let levelControler = 0;
 let index = 0;
 
 const measureResults = () => {
+    let result = document.querySelector(".result");
+    result.style.display = "flex"
     levelControler = 0;
     let percentage = Math.round((correctAnswer/thisQuizz.questions.length)*100);
     let userLevel = "";

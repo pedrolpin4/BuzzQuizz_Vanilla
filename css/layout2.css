@@ -79,6 +79,8 @@
 }
 
 .result{
+    display: none;
+    flex-direction: column;
     margin: 0 auto;
     margin-top: 62px;
     background: #FFFFFF;

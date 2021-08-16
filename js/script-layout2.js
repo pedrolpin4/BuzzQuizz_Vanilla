@@ -91,7 +91,6 @@ function showQuizz(quizz){
         }
     }
     questionConteiner.innerHTML = newQuestion; 
-    measureResults();
 }
 
 function processResponse(element){
@@ -115,6 +114,10 @@ function processResponse(element){
 
         if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
             optionImg.classList.add("opacity") //ganha esbranquiçado
+        }
+
+        if(correctAnswer == 2){
+            measureResults();
         }
     }
 
