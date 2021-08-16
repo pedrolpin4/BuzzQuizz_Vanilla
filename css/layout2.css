@@ -48,6 +48,10 @@
     text-align: center;
 }
 
+.green h1{
+    color:green;
+}
+
 .question img{
     display: flex;
     width: 331.94px;

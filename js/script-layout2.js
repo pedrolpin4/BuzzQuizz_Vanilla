@@ -50,8 +50,8 @@ function showQuizz(quizz){
 
         if ((j+1)=== answersLength) { //na última foto fecha a div question
             newQuestion = newQuestion +
-        `       <div class = "options">
-                    <img src=" ${answersImage}" alt=" ">
+        `       <div class = "options" onclick="processResponse(this)">
+                    <img src=" ${answersImage}"  alt="ilustra uma alternativa">
                     <h1>${answersText}</h1>
                 </div>
             </div>
@@ -59,12 +59,37 @@ function showQuizz(quizz){
         }   
         else
         newQuestion = newQuestion +
-        `   <div class = "options">
-                <img src=" ${answersImage}" alt=" ">
+        `   <div class = "options" onclick="processResponse(this)">
+                <img src=" ${answersImage}"  alt="ilustra uma alternativa">
                 <h1>${answersText}</h1>
             </div>
         `
         }
     }
     questionConteiner.innerHTML = newQuestion;    
+}
+
+function processResponse(element){
+    //pegar o elemento pai da opção que foi clicada, que é 
+    let parentElement = element.parentNode;
+    console.log(parentElement)
+    const classCapture = parentElement.querySelectorAll(".options")
+    console.log(classCapture)
+    
+    for (let i = 0; i < classCapture.length; i++){
+
+        let div = classCapture[i]
+        let optionText = classCapture[i].querySelector("h1")
+        optionText.classList.add("green")
+        console.log(optionText)
+
+    }
+    
+    
+     
+    
+    //esbranquiçar imagens que não foram clicadas
+    //deixar legenda verde da resposta correta
+    //scrollar pra proxima pergunta
+    //guarda a resposta em algum objeto que mais tarde sera necessario para verificação do resultado
 }

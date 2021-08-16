@@ -1,4 +1,8 @@
 function searchQuizzes() {
+    const loadingPage = document.querySelector(".loading-page");
+    loadingPage.style.display = "flex";
+    const layout1 = document.querySelector(".page1");
+    layout1.classList.add("layout1"); 
     const promisse = axios.get(
       "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes"
     );
@@ -7,7 +11,11 @@ function searchQuizzes() {
 searchQuizzes()
 
 function classifyQuizzes(quizzes) {
-    console.log(quizzes)  
+    console.log(quizzes)
+    const loadingPage = document.querySelector(".loading-page");
+    loadingPage.style.display = "none";
+    const layout1 = document.querySelector(".page1");
+    layout1.classList.remove("layout1"); 
     if (true){ //mais tarde add verificação se o quizz é meu ou n
         allQuizzes(quizzes)
     }  
@@ -58,8 +66,8 @@ function getQuizz(element){
     }
 
 function create(){
-    const alterTo = document.querySelector(".page1")
-    const from = document.querySelector(".page3") //ainda n tenho esse layout, apenas HTML
-    alterTo.classList.add("layout1") //vai dar display:none na tela 1
-    from.classList.remove("layout3") //vai retirar display:none da tela 3.1, ajustar essa config no html e css da tela 3
+    let hide = document.querySelector(".page1");
+    hide.style.display = "none";
+    let show = document.querySelector(".container-form1"); 
+    show.style.display = "flex";
 }
