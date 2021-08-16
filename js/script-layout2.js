@@ -169,6 +169,4 @@ const scrollIntoView = (thisQuestion) => {
     })
 }
 
-//scrollar pra proxima pergunta
-
 
