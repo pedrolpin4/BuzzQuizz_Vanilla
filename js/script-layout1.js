@@ -63,7 +63,7 @@ function getQuizz(element){
         `https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes/${id}`
       );
       promisse.then(showQuizz);
-    }
+}
 
 function create(){
     let hide = document.querySelector(".page1");

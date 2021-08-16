@@ -1,7 +1,9 @@
 let correctAnswer = 0;
+let thisQuizz = {}
 
 function showQuizz(quizz){
     console.log(quizz)
+    thisQuizz = quizz.data;
 
     //rotina para mudar o topo
     const topQuizz = document.querySelector(".top-quizz")
@@ -68,7 +70,8 @@ function showQuizz(quizz){
         `
         }
     }
-    questionConteiner.innerHTML = newQuestion;    
+    questionConteiner.innerHTML = newQuestion;
+    measureResults();  
 }
 
 function processResponse(element){
@@ -89,9 +92,9 @@ function processResponse(element){
     
     
      
-    
     //esbranquiçar imagens que não foram clicadas
     //deixar legenda verde da resposta correta
     //scrollar pra proxima pergunta
     //guarda a resposta em algum objeto que mais tarde sera necessario para verificação do resultado
 }
+

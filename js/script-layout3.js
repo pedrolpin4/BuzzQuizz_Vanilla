@@ -1,5 +1,6 @@
 let myQuizz = {};
 let acumulator = 0;
+let ids = [];
 
 const createForms = (n) => {
     let hide = document.querySelector(`.container-form${n}`);
@@ -147,10 +148,18 @@ const questionAttributesOrganizer = (question, i) => {
             case 3: question.answers[0].image = element.value; break
             case 4: question.answers.push({text: element.value, isCorrectAnswer: false}); break
             case 5: question.answers[1].image = element.value; break
-            case 6: question.answers.push({text: element.value, isCorrectAnswer: false}); break
-            case 7: question.answers[2].image = element.value; break
-            case 8: question.answers.push({text: element.value, isCorrectAnswer: false}); break
-            case 9: question.answers[3].image = element.value; break
+            case 6: if(element.value != ""){
+                        question.answers.push({text: element.value, isCorrectAnswer: false})
+                    }; break
+            case 7: if(element.value != ""){
+                        question.answers[2].image = element.value
+                    }; break
+            case 8: if(element.value != ""){
+                        question.answers.push({text: element.value, isCorrectAnswer: false})
+                    }; break
+            case 9: if(element.value != ""){
+                        question.answers[3].image = element.value
+                    }; break
         }
     })
     return question
@@ -386,21 +395,33 @@ const goToSuccessPage = () => {
     }
 }
 
-const serverWork = (n) =>{
+const serverWork = () =>{
     let hide = document.querySelector(`.container-form4`);
     hide.style.display = "none";
     let show = document.querySelector(`.loading-page`);
     show.style.display = "flex";
+    console.log(myQuizz);
     const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes", myQuizz);
-    promise.then(goToLayout, n);
+    promise.then(myQuizzOrganizer);
     promise.catch(treatError);
 }
 
-const goToLayout = (n) => {
+const myQuizzOrganizer = quizz => {
+    localStorage.removeItem("idsList");
+    console.log(quizz.data);
+    JSON.parse(ids);
+    let myId = quizz.data.id;
+    ids.push(myId);
+    JSON.stringify(ids);
+    localStorage.setItem("idsList", ids);
+    getQuizz(quizz.data);
+}
+
+const goToLayout1 = () => {
     let hide = document.querySelector(`.loading-page`);
     hide.style.display = "none";
-    let show = document.querySelector(`.layout${n}`);
-    show.style.display = "initial";
+    let show = document.querySelector(`.page1`);
+    show.classList.remove(".layout1");
 }
 
 const treatError = () => {
