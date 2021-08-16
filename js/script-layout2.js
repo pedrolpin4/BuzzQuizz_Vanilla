@@ -31,7 +31,6 @@ function showQuizz(quizz){
         answer.sort( () => Math.random() - 0.5) //embaralhando subarray
         answers.push(answer)
     }      
-        console.log(answers)  
     //fim da rotina para embaralhar respostas
 
     for (let i = 0; i < questions; i++){
@@ -49,23 +48,44 @@ function showQuizz(quizz){
             
             let answersImage = answers[i][j].image
             let answersText = answers[i][j].text 
+            let answersBoolean = answers[i][j].isCorrectAnswer
 
-        if ((j+1)=== answersLength) { //na última foto fecha a div question
+        if ((j+1)=== answersLength && (answersBoolean === true)) { //na última foto fecha a div question
             newQuestion = newQuestion +
-        `       <div class = "options" onclick="processResponse(this)">
+        `       <div class = "options booleanTrue" onclick="processResponse(this)">
                     <img src=" ${answersImage}"  alt="ilustra uma alternativa">
-                    <h1>${answersText}</h1>
+                    <h1 class = "black">${answersText}</h1>
                 </div>
             </div>
         `
-        }   
-        else
-        newQuestion = newQuestion +
-        `   <div class = "options" onclick="processResponse(this)">
+        } 
+        else if ((j+1)=== answersLength && (answersBoolean !== true)) {
+            newQuestion = newQuestion +
+            `       <div class = "options" onclick="processResponse(this)">
+                        <img src=" ${answersImage}"  alt="ilustra uma alternativa">
+                        <h1 class = "black">${answersText}</h1>
+                    </div>
+                </div>
+            `
+
+        } 
+        else if ( (j+1)!== answersLength && (answersBoolean === true) ){
+            newQuestion = newQuestion +
+        `   <div class = "options booleanTrue" onclick="processResponse(this)">
                 <img src=" ${answersImage}"  alt="ilustra uma alternativa">
-                <h1>${answersText}</h1>
+                <h1 class = "black">${answersText}</h1>
             </div>
         `
+        } 
+        else {
+            newQuestion = newQuestion +
+        `   <div class = "options" onclick="processResponse(this)">
+                <img src=" ${answersImage}"  alt="ilustra uma alternativa">
+                <h1 class = "black">${answersText}</h1>
+            </div>
+        `
+
+        }
         }
     }
     questionConteiner.innerHTML = newQuestion;    
@@ -74,24 +94,29 @@ function showQuizz(quizz){
 function processResponse(element){
     //pegar o elemento pai da opção que foi clicada, que é 
     let parentElement = element.parentNode;
-    console.log(parentElement)
     const classCapture = parentElement.querySelectorAll(".options")
-    console.log(classCapture)
-    
+
     for (let i = 0; i < classCapture.length; i++){
 
-        let div = classCapture[i]
         let optionText = classCapture[i].querySelector("h1")
-        optionText.classList.add("green")
-        console.log(optionText)
+        let optionImg = classCapture[i].querySelector("img")
+        let optionBoolean = classCapture[i]
 
+        if (optionBoolean.classList.contains("booleanTrue")) {
+            optionText.classList.remove("black")
+            optionText.classList.add("green")
+            if (optionBoolean === element){
+                correctAnswer++
+            }
+        }
+
+        if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
+            optionImg.classList.add("opacity") //ganha esbranquiçado
+        }
     }
-    
-    
-     
-    
-    //esbranquiçar imagens que não foram clicadas
-    //deixar legenda verde da resposta correta
-    //scrollar pra proxima pergunta
-    //guarda a resposta em algum objeto que mais tarde sera necessario para verificação do resultado
+
+    console.log(correctAnswer)
 }
+
+    
+    //scrollar pra proxima pergunta

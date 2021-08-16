@@ -66,7 +66,7 @@ function getQuizz(element){
     }
 
 function create(){
-    let hide = document.querySelector(".layout1");
+    let hide = document.querySelector(".page1");
     hide.style.display = "none";
     let show = document.querySelector(".container-form1"); 
     show.style.display = "flex";
