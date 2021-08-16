@@ -1,4 +1,5 @@
 let correctAnswer = 0;
+let click= 0;
 
 function showQuizz(quizz){
     console.log(quizz)
@@ -114,6 +115,10 @@ function processResponse(element){
             optionText.classList.add("green")
             if (optionBoolean === element){
                 correctAnswer++
+                click++
+            }
+            else{
+                click++
             }
         }
 
@@ -122,7 +127,7 @@ function processResponse(element){
         }
     }
 
-    console.log(correctAnswer)
+    console.log(correctAnswer, click)
 }
 
     
