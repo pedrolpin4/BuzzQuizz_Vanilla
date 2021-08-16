@@ -15,7 +15,6 @@ const measureResults = () => {
         }
     });
     let message = `${percentage}% de acerto: ${userLevel}`
-    console.log(message);
     showResults(message);
 }
 

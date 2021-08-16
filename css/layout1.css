@@ -48,7 +48,7 @@
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-    margin: 0px 0px 12px 0px;
+    margin: 138px 0px 12px 0px;
 }
 
 .my-quizz-box-title p {
@@ -99,12 +99,13 @@
 
 .quizz div{
     display: flex;
-    height: auto;
-    flex-wrap: wrap;
+    height: 54px;
+    word-break: break-all;
+    overflow-y: hidden;
     align-items: center;
     color: #FAFAFA;
     font-size: 19px;
-    margin: 0px 0px 7px 0px;
+    margin: 0px 0px 7px 17px;
 }
 
 @media (max-width: 1100px){
@@ -118,6 +119,7 @@
     }
 
     .my-quizz-box-title{
+        margin-top: 108px;
         align-self: flex-start;
     }
 
