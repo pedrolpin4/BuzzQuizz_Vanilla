@@ -36,6 +36,7 @@
     height: 137.99px;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .question h1{
@@ -46,6 +47,7 @@
     line-height: 23px;
     color: #000000;
     text-align: center;
+    overflow: hidden;
 }
 
 .green h1{

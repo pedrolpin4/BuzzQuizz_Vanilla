@@ -1,3 +1,5 @@
+let correctAnswer = 0;
+
 function showQuizz(quizz){
     console.log(quizz)
 
