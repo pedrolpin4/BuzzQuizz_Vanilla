@@ -99,10 +99,11 @@ function showQuizz(quizz){
 
 
 
-function processResponse(element){
-    //pegar o elemento pai da opção que foi clicada, que é 
+function processResponse(element){       
+
     let parentElement = element.parentNode;
     const classCapture = parentElement.querySelectorAll(".options")
+
 
     for (let i = 0; i < classCapture.length; i++){
 
@@ -110,23 +111,34 @@ function processResponse(element){
         let optionImg = classCapture[i].querySelector("img")
         let optionBoolean = classCapture[i]
 
-        if (optionBoolean.classList.contains("booleanTrue")) {
-            optionText.classList.remove("black")
-            optionText.classList.add("green")
-            if (optionBoolean === element){
-                correctAnswer++
-                click++
+        if (optionText.classList.contains("black")){           
+            
+    
+            if (optionBoolean.classList.contains("booleanTrue")) {
+                optionText.classList.remove("black")
+                optionText.classList.add("green")
+                if (optionBoolean === element){
+                    correctAnswer++
+                    click++
+                } else{
+                    click++
+                }
             }
-            else{
-                click++
+            else {
+                optionText.classList.remove("black")
+                optionText.classList.add("red")
             }
-        }
+    
+            if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
+                optionImg.classList.add("opacity") //ganha esbranquiçado
+            }
+            
+        }     
 
-        if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
-            optionImg.classList.add("opacity") //ganha esbranquiçado
-        }
-    }
+        
 
+    } 
+   
     console.log(correctAnswer, click)
 }
 
