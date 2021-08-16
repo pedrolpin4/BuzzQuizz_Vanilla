@@ -22,6 +22,7 @@ function classifyQuizzes(quizzes) {
 
     quizzes.data.forEach( element =>{
         let idVerificator = 0;
+        console.log(myIdsArray);
         if(!myIdsArray){
             myIdsArray.forEach(myId => {
                 if (Number(element.id) === Number(myId)){
