@@ -1,10 +1,11 @@
 let correctAnswer = 0;
 let thisQuizz = {}
 let click= 0;
+let numberOfQuestions;
 
 function showQuizz(quizz){
     console.log(quizz)
-    thisQuizz = quizz.data;
+    thisQuizz = quizz;
 
     //rotina para mudar o topo
     const topQuizz = document.querySelector(".top-quizz")
@@ -15,9 +16,10 @@ function showQuizz(quizz){
 
     //rotina para criar perguntas
     let questionConteiner = document.querySelector(".question-conteiner")
-    let newQuestion = " ";
-    let newAnswers = " ";
-    let questions = quizz.data.questions.length         
+    let newQuestion = "";
+    let newAnswers = "";
+    let questions = quizz.data.questions.length;
+    numberOfQuestions = questions;         
     
     
     //rotina para embaralhar respostas
@@ -122,20 +124,24 @@ function processResponse(element){
             else{
                 click++
             }
+            if(click == numberOfQuestions){
+                measureResults();
+            }
         }
 
         if(optionBoolean !== element){ //percorre todas as respostas, pega todas além da clicada 
             optionImg.classList.add("opacity") //ganha esbranquiçado
         }
-
-        if(correctAnswer == 2){
-            measureResults();
-        }
     }
-
-    console.log(correctAnswer, click)
 }
 
+let restartQuizz = () => {
+    showQuizz(thisQuizz);
+    let result = document.querySelector(".result");
+    result.style.display = "none";
+    click = 0;
+    correctAnswer = 0;
+}
     
     
      

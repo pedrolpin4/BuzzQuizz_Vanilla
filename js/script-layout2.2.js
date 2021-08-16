@@ -5,9 +5,9 @@ const measureResults = () => {
     let result = document.querySelector(".result");
     result.style.display = "flex"
     levelControler = 0;
-    let percentage = Math.round((correctAnswer/thisQuizz.questions.length)*100);
+    let percentage = Math.round((correctAnswer/thisQuizz.data.questions.length)*100);
     let userLevel = "";
-    thisQuizz.levels.forEach((element, i) => {
+    thisQuizz.data.levels.forEach((element, i) => {
         if(Number(element.minValue) <= percentage && Number(element.minValue) >= levelControler){
             userLevel = element.title;
             levelControler = Number(element.minValue);
@@ -20,8 +20,8 @@ const measureResults = () => {
 
 const showResults = message => {
     document.querySelector(".top-result").innerHTML = message;
-    document.querySelector(".description img").src = thisQuizz.levels[index].image;
-    document.querySelector(".description div").innerHTML = thisQuizz.levels[index].text;
+    document.querySelector(".description img").src = thisQuizz.data.levels[index].image;
+    document.querySelector(".description div").innerHTML = thisQuizz.data.levels[index].text;
 }
 
 const goHome = () => {
