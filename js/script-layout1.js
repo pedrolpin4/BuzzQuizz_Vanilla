@@ -6,8 +6,9 @@ function searchQuizzes() {
     const promisse = axios.get(
       "https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes"
     );
+    console.log(localStorage.getItem("idsList"));
     promisse.then(classifyQuizzes);
-  }
+}
 searchQuizzes()
 
 function classifyQuizzes(quizzes) {
@@ -54,6 +55,8 @@ function getQuizz(element){
     //ir para pagina 2
     const alterTo = document.querySelector(".page1")
     const from = document.querySelector(".page2")
+    const loadingPage = document.querySelector(".loading-page");
+    loadingPage.style.display= "none";
     alterTo.classList.add("layout1")
     from.classList.remove("layout2")
 

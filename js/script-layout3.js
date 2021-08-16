@@ -27,31 +27,44 @@ const verifyBasicInfo = () => {
     inputs.forEach((element, i) => {
         switch(i){
             case 0: if(element.value.length >= 20 && element.value.length <= 65){
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";    
                     counter++;   
                 }else {
-                    element.parentNode.childNodes[3].innerHTML += `O título de seu quizz deve ter no mínimo 20 caracteres`;
+                    element.parentNode.childNodes[3].style.display = "flex" 
+                    element.parentNode.childNodes[3].innerHTML = `O título de seu quizz deve ter no mínimo 20 caracteres`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px"
                 } break;
-            case 1: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
+            case 1: 
+                let upperCaseImg1 = element.value.toUpperCase();
+                if(upperCaseImg1.substring(0,7) === "HTTP://" || upperCaseImg1.substring(0,8) === "HTTPS://"){
                     counter++;
-                    console.log(element.parentNode.childNodes[3]);   
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
+                    element.parentNode.childNodes[3].style.display = "flex"
+                    element.parentNode.childNodes[3].innerHTML = `Você deve inserir uma URL válida`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px"
                 } break;
             case 2: if(element.value >= 3 && !!(Number.isInteger(Number(element.value)))) {
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";    
                     counter++;   
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `O quizz deve ter pelo menos 3 perguntas`;
+                    element.parentNode.childNodes[3].style.display = "flex"
+                    element.parentNode.childNodes[3].innerHTML = `O quizz deve ter pelo menos 3 perguntas`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px"
                 } break;
             case 3: if(element.value >= 2 && !!(Number.isInteger(Number(element.value)))){
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";    
                     counter++;   
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `O quizz deve ter pelo menos 2 níveis`;
+                    element.parentNode.childNodes[3].style.display = "flex"
+                    element.parentNode.childNodes[3].innerHTML = `O quizz deve ter pelo menos 2 níveis`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px"
                 } break;
@@ -177,67 +190,96 @@ const questionInputsValidation = (i) => {
     let counter = 0;
     let inputs = document.querySelectorAll(`.q${i+1} input`);        
     inputs.forEach((element, f) => {
-        switch (f){
-            case 0: if(element.value.length >= 20){
-                    counter++;
-                } else {
-                    element.parentNode.childNodes[3].style.display = "flex";
-                    element.parentNode.childNodes[3].innerHTML += `O título de sua pergunta deve ter no mínimo 20 caracteres`;
-                    element.style.background = "#FFE9E9";
-                    element.style.marginBottom = "0px";
-                }
-                break;
+    switch (f){
+        case 0: if(element.value.length >= 20){
+                element.parentNode.childNodes[3].innerHTML = "";  
+                counter++;
+            } else {
+                element.parentNode.childNodes[3].style.display = "flex";
+                element.parentNode.childNodes[3].innerHTML = `O título de sua pergunta deve ter no mínimo 20 caracteres`;
+                element.style.background = "#FFE9E9";
+                element.style.marginBottom = "0px";
+            }
+            break;
 
-            case 1: if(element.value[0] === "#" && element.value.length === 7){      
+        case 1: if(element.value[0] === "#" && element.value.length === 7){
+                let colorCounter = 0;
+                let letter = element.value.toUpperCase();
+                for (let i = 1; i < 7; i++){
+                    if (((letter.charCodeAt(i) >= 48 && letter.charCodeAt(i) <= 57) || (letter.charCodeAt(i) >= 65 && letter.charCodeAt(i) <= 70))){
+                        colorCounter++
+                    }
+                } 
+
+                if (colorCounter === 6) {     
+                    element.style.background = "#FFffff";
+                    element.parentNode.childNodes[3].innerHTML = "";    
                     counter++;
                 } else {
                     element.parentNode.childNodes[3].style.display = "flex";
-                    element.parentNode.childNodes[3].innerHTML += `A cor de sua pergunta deve estar no padrão hexadecimal`;
+                    element.parentNode.childNodes[3].innerHTML = `A cor de sua pergunta deve estar no padrão hexadecimal`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
                 } 
-                break;
+            } else{
+                element.parentNode.childNodes[3].style.display = "flex";
+                element.parentNode.childNodes[3].innerHTML = `A cor de sua pergunta deve estar no padrão hexadecimal`;
+                element.style.background = "#FFE9E9";
+                element.style.marginBottom = "0px";
+            } break;
 
-            case 2: if(element.value != ""){
-                    counter++;
-                } else {
-                    element.parentNode.childNodes[3].style.display = "flex";
-                    element.parentNode.childNodes[3].innerHTML += `O texto de sua resposta correta não pode estar vazio`;
-                    element.style.background = "#FFE9E9";
-                    element.style.marginBottom = "0px";
-                } 
-                break;
+        case 2: if(element.value != ""){
+                element.style.background = "#FFffff";
+                element.parentNode.childNodes[3].innerHTML = "";    
+                counter++;
+            } else {
+                element.parentNode.childNodes[3].style.display = "flex";
+                element.parentNode.childNodes[3].innerHTML = `O texto de sua resposta correta não pode estar vazio`;
+                element.style.background = "#FFE9E9";
+                element.style.marginBottom = "0px";
+            } 
+            break;
 
-            case 3: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
-                    counter++;
-                } else {
-                    element.parentNode.childNodes[3].style.display = "flex";
-                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
-                    element.style.background = "#FFE9E9";
-                    element.style.marginBottom = "0px";
-                } 
-                break;
+        case 3: 
+            let upperCaseImg2 = element.value.toUpperCase();
+            if(upperCaseImg2.substring(0,7) === "HTTP://" || upperCaseImg2.substring(0,8) === "HTTPS://"){
+                element.style.background = "#FFffff";
+                element.parentNode.childNodes[3].innerHTML = "";        
+                counter++;
+            } else {
+                element.parentNode.childNodes[3].style.display = "flex";
+                element.parentNode.childNodes[3].innerHTML = `Você deve inserir uma URL válida`;
+                element.style.background = "#FFE9E9";
+                element.style.marginBottom = "0px";
+            } 
+            break;
 
-            case 4: if(element.value !== ""){
-                    counter++;
-                } else {
-                    element.parentNode.childNodes[3].style.display = "flex";
-                    element.parentNode.childNodes[3].innerHTML += `Você deve ter pelo menos uma resposta incorreta`;
-                    element.style.background = "#FFE9E9";
-                    element.style.marginBottom = "0px";
-                }
-                break;
+        case 4: if(element.value !== ""){
+                element.style.background = "#FFffff";
+                element.parentNode.childNodes[3].innerHTML = "";    
+                counter++;
+            } else {
+                element.parentNode.childNodes[3].style.display = "flex";
+                element.parentNode.childNodes[3].innerHTML = `Você deve ter pelo menos uma resposta incorreta`;
+                element.style.background = "#FFE9E9";
+                element.style.marginBottom = "0px";
+            }
+            break;
 
-            case 5: if((element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://")){
-                    counter++;
-                } else {
-                    element.parentNode.childNodes[3].style.display = "flex";
-                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma URL válida`;
-                    element.style.background = "#FFE9E9";
-                    element.style.marginBottom = "0px";
-                }
-                break;
-         }
+        case 5: 
+            let upperCaseImg3 = element.value.toUpperCase();
+            if(upperCaseImg3.substring(0,7) === "HTTP://" || upperCaseImg3.substring(0,8) === "HTTPS://"){
+                element.style.background = "#FFffff";
+                element.parentNode.childNodes[3].innerHTML = "";        
+                counter++;
+            } else {
+                element.parentNode.childNodes[3].style.display = "flex";
+                element.parentNode.childNodes[3].innerHTML = `Você deve inserir uma URL válida`;
+                element.style.background = "#FFE9E9";
+                element.style.marginBottom = "0px";
+            } 
+        break;
+        }
          //add case url válida ou vazio
     })
     acumulator += counter;
@@ -328,36 +370,50 @@ let levelInputsValidation = (i) => {
     inputs.forEach((element, f) => {
         switch (f){
             case 0: if(element.value.length >= 10){
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";        
                     counter++;
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `O título de seu nível deve ter no mínimo 10 caracteres`;
+                    element.parentNode.childNodes[3].style.display = "flex";
+                    element.parentNode.childNodes[3].innerHTML = `O título de seu nível deve ter no mínimo 10 caracteres`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
                 };
                 break;
 
             case 1: if(( Number(element.value) > 0 || element.value === "0" )  && ( Number(element.value) < 100 || element.value === "100")) {      
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";        
                     counter++;
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `A porcentagem miníma de acertos de seu nível deve ser entre 0 e 100`;
+                    element.parentNode.childNodes[3].style.display = "flex";
+                    element.parentNode.childNodes[3].innerHTML = `A porcentagem miníma de acertos de seu nível deve ser entre 0 e 100`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
                 };
                 if(element.value == 0) {counter++};
                 break;
 
-            case 2: if(element.value.substring(0,7) === "http://" || element.value.substring(0,8) === "https://"){
+            case 2: 
+                let upperCaseImg4 = element.value.toUpperCase();
+                if(upperCaseImg4.substring(0,7) === "HTTP://" || upperCaseImg4.substring(0,8) === "HTTPS://"){
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";            
                     counter++;
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `Você deve inserir uma url válida`;
+                    element.parentNode.childNodes[3].style.display = "flex";
+                    element.parentNode.childNodes[3].innerHTML = `Você deve inserir uma url válida`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
                 }; 
                 break;
             case 3: if(element.value.length > 30 || element.value.length == 30 ){
+                    element.parentNode.childNodes[3].innerHTML = "";
+                    element.style.background = "#ffffff";        
                     counter++;
                 } else {
-                    element.parentNode.childNodes[3].innerHTML += `A descrição do seu nível deve ter no mínimo 30 caracteres`;
+                    element.parentNode.childNodes[3].style.display = "flex";
+                    element.parentNode.childNodes[3].innerHTML = `A descrição do seu nível deve ter no mínimo 30 caracteres`;
                     element.style.background = "#FFE9E9";
                     element.style.marginBottom = "0px";
                 };
@@ -406,7 +462,6 @@ const serverWork = () =>{
     hide.style.display = "none";
     let show = document.querySelector(`.loading-page`);
     show.style.display = "flex";
-    console.log(myQuizz);
     const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v3/buzzquizz/quizzes", myQuizz);
     promise.then(myQuizzOrganizer);
     promise.catch(treatError);
@@ -414,12 +469,10 @@ const serverWork = () =>{
 
 const myQuizzOrganizer = quizz => {
     localStorage.removeItem("idsList");
-    console.log(quizz.data);
-    JSON.parse(ids);
     let myId = quizz.data.id;
     ids.push(myId);
-    JSON.stringify(ids);
-    localStorage.setItem("idsList", ids);
+    let idsSerialized = JSON.stringify(ids);
+    localStorage.setItem("idsList", idsSerialized);
     getQuizz(quizz.data);
 }
 
