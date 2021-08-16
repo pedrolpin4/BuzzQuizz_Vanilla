@@ -15,25 +15,23 @@ searchQuizzes()
 
 function classifyQuizzes(quizzes) {
     myIdsArray = JSON.parse(localStorage.getItem("idsList"));
-    let myQuizzesLength = myIdsArray.length
     const loadingPage = document.querySelector(".loading-page");
     loadingPage.style.display = "none";
     const layout1 = document.querySelector(".page1");
     layout1.classList.remove("layout1");
 
     quizzes.data.forEach( element =>{
-    let idVerificator = 0;
-    if(myQuizzesLength != 0){
+        let idVerificator = 0;
+        if(!myIdsArray){
             myIdsArray.forEach(myId => {
                 if (Number(element.id) === Number(myId)){
                     idVerificator++
                     myQuizzes(element)
-                    console.log(element);
                 } else {allQuizzes(element)} 
             })
-    } else{
-        allQuizzes(element);
-    }  
+        } else{
+            allQuizzes(element);
+        }  
     }) 
 }
 
