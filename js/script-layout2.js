@@ -42,7 +42,10 @@ function showQuizz(quizz){
         `
         <div class="question">
             <p style = "background: ${questionColor}">${questionTitle}</p>
-           `
+         
+            `
+        newQuestion = newQuestion + `<div class = "allAnswers">`
+       
 
         for(let j = 0; j < answersLength; j++){            
             
@@ -87,9 +90,13 @@ function showQuizz(quizz){
 
         }
         }
+    newQuestion = newQuestion + `</div>`    
     }
-    questionConteiner.innerHTML = newQuestion;    
+    
+    questionConteiner.innerHTML = newQuestion;   
 }
+
+
 
 function processResponse(element){
     //pegar o elemento pai da opção que foi clicada, que é 
