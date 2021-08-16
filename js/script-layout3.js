@@ -481,6 +481,7 @@ const goToLayout1 = () => {
     hide.style.display = "none";
     let show = document.querySelector(`.page1`);
     show.classList.remove(".layout1");
+    searchQuizzes();
 }
 
 const treatError = () => {
