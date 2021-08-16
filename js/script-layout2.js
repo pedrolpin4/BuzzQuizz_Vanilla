@@ -1,5 +1,6 @@
 let correctAnswer = 0;
 let thisQuizz = {}
+let click= 0;
 
 function showQuizz(quizz){
     console.log(quizz)
@@ -44,7 +45,10 @@ function showQuizz(quizz){
         `
         <div class="question">
             <p style = "background: ${questionColor}">${questionTitle}</p>
-           `
+         
+            `
+        newQuestion = newQuestion + `<div class = "allAnswers">`
+       
 
         for(let j = 0; j < answersLength; j++){            
             
@@ -89,9 +93,13 @@ function showQuizz(quizz){
 
         }
         }
+    newQuestion = newQuestion + `</div>`    
     }
-    questionConteiner.innerHTML = newQuestion; 
+    
+    questionConteiner.innerHTML = newQuestion;   
 }
+
+
 
 function processResponse(element){
     //pegar o elemento pai da opção que foi clicada, que é 
@@ -109,6 +117,10 @@ function processResponse(element){
             optionText.classList.add("green")
             if (optionBoolean === element){
                 correctAnswer++
+                click++
+            }
+            else{
+                click++
             }
         }
 
@@ -121,7 +133,7 @@ function processResponse(element){
         }
     }
 
-    console.log(correctAnswer)
+    console.log(correctAnswer, click)
 }
 
     
