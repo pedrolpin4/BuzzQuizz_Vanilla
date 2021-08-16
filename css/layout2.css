@@ -45,12 +45,15 @@
     font-weight: bold;
     font-size: 20px;
     line-height: 23px;
-    color: #000000;
     text-align: center;
     overflow: hidden;
 }
 
-.green h1{
+.black{
+    color: #000000;
+}
+
+.green{
     color:green;
 }
 
@@ -59,6 +62,10 @@
     width: 331.94px;
     height: 175.2px;    
     padding: 20px 24px 7.7px 36px;
+}
+
+.opacity{
+    opacity: 0.3;
 }
 
 .top{
@@ -95,7 +102,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    overflow-wrap: break-word;
+    word-break: break-word;
     width: 727px;
     padding: 23px 16px;
 }
@@ -107,16 +114,15 @@
     font-weight: bold;
     font-size: 19px;
     margin-top: 18px;
-    overflow-wrap: break-word;
+    word-break: break-word;
     color: #484848;
     width: 723px;
 }
 
 .description div{
     width: 343px;
-    height: 273px;
     display: flex;
-    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .restart{

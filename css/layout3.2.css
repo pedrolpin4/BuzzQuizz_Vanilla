@@ -58,11 +58,11 @@
     color: #EC362D;
 }
 
-.form2 input:nth-child(odd){
+.form2 input:nth-child(2){
     margin-bottom: 32px;
 }
 
-.form2 input:nth-child(-n+5){
+.form2 input:nth-child(-2n+5){
     margin-bottom: 14px;
 }
 
